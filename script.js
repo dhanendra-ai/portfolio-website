@@ -1,30 +1,38 @@
-const text = ["Java Developer", "Web Developer", "AI Learner"];
+const text = ["Java Developer", "Web Developer", "Automation Expert", "AI Enthusiast"];
 let i = 0;
 let j = 0;
-let currentText = "";
 let isDeleting = false;
 
 function type() {
-  currentText = text[i];
+  const target = document.getElementById("typing");
+  let currentText = text[i];
 
   if (isDeleting) {
-    document.getElementById("typing").innerHTML =
-      currentText.substring(0, j--);
+    target.innerHTML = currentText.substring(0, j--) + '<span class="cursor">|</span>';
   } else {
-    document.getElementById("typing").innerHTML =
-      currentText.substring(0, j++);
+    target.innerHTML = currentText.substring(0, j++) + '<span class="cursor">|</span>';
   }
 
-  if (!isDeleting && j === currentText.length) {
+  let typeSpeed = isDeleting ? 50 : 150;
+
+  if (!isDeleting && j === currentText.length + 1) {
     isDeleting = true;
-    setTimeout(type, 1000);
+    typeSpeed = 1500; // Pause at end
   } else if (isDeleting && j === 0) {
     isDeleting = false;
     i = (i + 1) % text.length;
-    setTimeout(type, 200);
-  } else {
-    setTimeout(type, isDeleting ? 50 : 100);
+    typeSpeed = 500;
   }
+
+  setTimeout(type, typeSpeed);
 }
 
-type();
+// Add CSS for cursor blinking
+const style = document.createElement('style');
+style.innerHTML = `
+  .cursor { animation: blink 0.7s infinite; color: #38bdf8; }
+  @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+`;
+document.head.appendChild(style);
+
+window.onload = type;
