@@ -4,18 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dhanendra Sahu | Portfolio</title>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav>
-  <h2>Dhanendra</h2>
+  <div class="logo">Dhanendra<span>.ai</span></div>
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -23,60 +19,75 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <h1>Hi, I'm <span>Dhanendra</span></h1>
-  <h2 id="typing"></h2>
-  <a href="#contact" class="btn">Hire Me</a>
+  <div class="hero-content">
+    <h1>Hi, I'm <span>Dhanendra</span></h1>
+    <h2 id="typing"></h2>
+    <p>Engineering Student | AI/ML Enthusiast | Automation Expert</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn">Hire Me</a>
+      <a href="#projects" class="btn btn-outline">View Work</a>
+    </div>
+  </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
-  <h2>About Me</h2>
+  <div class="section-title">
+    <h2>About Me</h2>
+    <div class="underline"></div>
+  </div>
   <p>
-    B.Tech CSE (AI) student passionate about building real-world projects.
-    Skilled in Java, Web Development and learning AI & Cloud.
+    I am a B.Tech CSE (AI) student passionate about building intelligent systems. 
+    Currently, I'm focusing on **Java**, **Web Development**, and **n8n Automation**.
   </p>
 </section>
 
-<!-- SKILLS -->
-<section>
-  <h2>Skills</h2>
-  <div class="skills">
-    <span>Java</span>
-    <span>HTML</span>
-    <span>CSS</span>
-    <span>JavaScript</span>
-  </div>
-</section>
-
-<!-- PROJECTS -->
 <section id="projects">
-  <h2>Projects</h2>
-  <div class="projects">
-
+  <div class="section-title">
+    <h2>My Projects</h2>
+    <div class="underline"></div>
+  </div>
+  <div class="projects-grid">
     <div class="card">
+      <div class="card-icon"><i class="fas fa-code"></i></div>
       <h3>Portfolio Website</h3>
-      <p>Personal portfolio hosted on GitHub.</p>
+      <p>Modern personal portfolio hosted on GitHub Pages to showcase my skills.</p>
+      <div class="tags"><span>HTML</span> <span>CSS</span> <span>JS</span></div>
     </div>
 
     <div class="card">
-      <h3>Java Mini Project</h3>
-      <p>Basic Java application.</p>
+      <div class="card-icon"><i class="fas fa-robot"></i></div>
+      <h3>WhatsApp Automation</h3>
+      <p>Building automated workflows using n8n and Spring Boot for business updates.</p>
+      <div class="tags"><span>n8n</span> <span>Java</span> <span>API</span></div>
     </div>
-
+    
+    <div class="card">
+      <div class="card-icon"><i class="fas fa-brain"></i></div>
+      <h3>AI Analysis Tool</h3>
+      <p>Exploring Python libraries like NumPy and Pandas for data science modeling.</p>
+      <div class="tags"><span>Python</span> <span>AI/ML</span></div>
+    </div>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
-  <h2>Contact</h2>
-  <p>Email: dhanendra1303.com</p>
-  <a href="resume.pdf" class="btn">Download Resume</a>
+  <div class="section-title">
+    <h2>Get In Touch</h2>
+    <div class="underline"></div>
+  </div>
+  <div class="contact-container">
+    <p><i class="fas fa-envelope"></i> dhanendra1303@gmail.com</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-github"></i></a>
+      <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+    <a href="resume.pdf" class="btn" style="margin-top: 30px;">Download Resume</a>
+  </div>
 </section>
 
 <footer>
-  <p>© 2026 Dhanendra Sahu</p>
+  <p>© 2026 Dhanendra Sahu | Made with ❤️</p>
 </footer>
 
 <script src="script.js"></script>
