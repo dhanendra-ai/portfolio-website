@@ -1,6 +1,6 @@
 /**
  * Dhanendra Sahu | Portfolio Script 2026
- * Features: Dynamic Typing, Scroll Reveal, and Glassmorphism Logic
+ * Features: Dynamic Typing, Scroll Reveal, Contact Form, Custom Cursor
  */
 
 const phrases = [
@@ -20,30 +20,25 @@ function typeEffect() {
 
   const currentPhrase = phrases[i];
 
-  // Typing/Deleting Logic
   if (isDeleting) {
-    target.innerHTML = currentPhrase.substring(0, j--) + '<span class="cursor">|</span>';
+    target.innerHTML = currentPhrase.substring(0, j--) + '<span class="cursor-text">|</span>';
   } else {
-    target.innerHTML = currentPhrase.substring(0, j++) + '<span class="cursor">|</span>';
+    target.innerHTML = currentPhrase.substring(0, j++) + '<span class="cursor-text">|</span>';
   }
 
-  // Adaptive Speed Logic
   let typeSpeed = isDeleting ? 40 : 120;
 
-  // State Management
   if (!isDeleting && j === currentPhrase.length + 1) {
     isDeleting = true;
-    typeSpeed = 2000; // Pause at completion
+    typeSpeed = 2000;
   } else if (isDeleting && j === 0) {
     isDeleting = false;
     i = (i + 1) % phrases.length;
-    typeSpeed = 600; // Pause before starting next word
+    typeSpeed = 600;
   }
-
   setTimeout(typeEffect, typeSpeed);
 }
 
-// Scroll Reveal Animation (Projects aur About section ke liye)
 const revealOnScroll = () => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -53,17 +48,16 @@ const revealOnScroll = () => {
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('section, .card').forEach(el => {
+  document.querySelectorAll('section, .card, .contact-container').forEach(el => {
     el.classList.add('reveal-hidden');
     observer.observe(el);
   });
 };
 
-// Dynamic Cursor Styles
 const injectStyles = () => {
   const style = document.createElement('style');
   style.innerHTML = `
-    .cursor { 
+    .cursor-text { 
       animation: blink 0.8s infinite; 
       color: #38bdf8; 
       margin-left: 2px;
@@ -76,9 +70,42 @@ const injectStyles = () => {
   document.head.appendChild(style);
 };
 
-// Initialize
+// --- NEW FEATURE: Custom Cursor Logic ---
+const initCursor = () => {
+  const cursorDot = document.getElementById("cursor-dot");
+  const cursorOutline = document.getElementById("cursor-outline");
+
+  window.addEventListener("mousemove", function (e) {
+    const posX = e.clientX;
+    const posY = e.clientY;
+
+    cursorDot.style.left = \`\${posX}px\`;
+    cursorDot.style.top = \`\${posY}px\`;
+
+    // Slight delay for the outline for a cool trailing effect
+    cursorOutline.animate({
+      left: \`\${posX}px\`,
+      top: \`\${posY}px\`
+    }, { duration: 500, fill: "forwards" });
+  });
+};
+
+// --- NEW FEATURE: Contact Form Submit Logic ---
+const initForm = () => {
+  const form = document.getElementById("contact-form");
+  if(form) {
+    form.addEventListener("submit", (e) => {
+      e.preventDefault(); // Prevents page reload
+      alert("Thanks for reaching out! I will get back to you soon.");
+      form.reset(); // Clears the form fields
+    });
+  }
+};
+
 window.addEventListener('DOMContentLoaded', () => {
   injectStyles();
   typeEffect();
   revealOnScroll();
+  initCursor();
+  initForm();
 });
