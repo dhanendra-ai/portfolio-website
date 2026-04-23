@@ -10,6 +10,9 @@
 </head>
 <body>
 
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-outline" id="cursor-outline"></div>
+
 <nav>
   <div class="logo">Dhanendra<span>.ai</span></div>
   <ul>
@@ -65,12 +68,22 @@
 </section>
 
 <section id="contact">
-  <div class="contact-card">
+  <div class="section-header">
     <h2>Get In Touch</h2>
-    <p>Email: <a href="mailto:dhanendra1303@gmail.com">dhanendra1303@gmail.com</a></p>
+    <div class="line"></div>
+  </div>
+  <div class="contact-container">
+    <form id="contact-form" class="contact-form">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Your Email" required>
+      <textarea placeholder="Your Message" rows="5" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
     <div class="socials">
+      <p>Or connect via:</p>
       <a href="#"><i class="fab fa-github"></i></a>
       <a href="#"><i class="fab fa-linkedin"></i></a>
+      <a href="mailto:dhanendra1303@gmail.com"><i class="fas fa-envelope"></i></a>
     </div>
   </div>
 </section>
