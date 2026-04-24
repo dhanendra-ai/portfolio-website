@@ -180,3 +180,77 @@ nav a:hover { color: var(--primary); }
 .socials a:hover { color: var(--primary); }
 
 footer { text-align: center; padding: 30px; background: #010409; margin-top: 50px; }
+/* ... upar ka sara code (nav, hero, buttons, etc.) ... */
+
+.socials a:hover { color: var(--primary); }
+
+footer { text-align: center; padding: 30px; background: #010409; margin-top: 50px; }
+
+/* 👇 YAHAN SE NAYA TIMELINE CODE SHURU HOGA 👇 */
+
+/* TIMELINE STYLES */
+.timeline-container {
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  padding: 20px 10%;
+}
+
+/* Middle glowing line */
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(56, 189, 248, 0.3);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50%;
+  position: relative;
+  margin-bottom: 40px;
+}
+
+.timeline-item:nth-child(even) {
+  justify-content: flex-start;
+  padding-right: 0;
+  padding-left: 50%;
+}
+
+.timeline-dot {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 16px;
+  height: 16px;
+  background: var(--bg-dark);
+  border: 3px solid var(--primary);
+  border-radius: 50%;
+  box-shadow: 0 0 15px var(--primary);
+  z-index: 2;
+}
+
+.timeline-content {
+  width: 80%;
+  margin: 0 20px;
+  padding: 20px 30px;
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  color: var(--primary);
+  font-size: 1.2rem;
+}
+
+.timeline-date {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin-bottom: 10px;
+  display: inline-block;
+}
