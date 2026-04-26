@@ -1,6 +1,3 @@
-
-Copy
-
 /* ============================================
    Dhanendra Sahu | Portfolio Stylesheet 2026
    ============================================ */
@@ -586,7 +583,7 @@ footer strong { color: white; }
 }
  
 /* ============================================
-   ✅ GITHUB STATS SECTION
+   GITHUB STATS SECTION
    ============================================ */
 .github-stats-container {
   display: grid;
@@ -627,4 +624,50 @@ footer strong { color: white; }
  
 @media (max-width: 768px) {
   .github-card-full { grid-column: 1; }
+}
+ 
+/* ============================================
+   ✅ PROJECT FILTER BUTTONS
+   ============================================ */
+.filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 35px;
+}
+ 
+.filter-btn {
+  padding: 8px 22px;
+  border-radius: 50px;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  background: transparent;
+  color: var(--text-muted);
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: none;
+  transition: all 0.3s ease;
+}
+ 
+.filter-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: translateY(-2px);
+}
+ 
+.filter-btn.active {
+  background: var(--primary);
+  color: #020617;
+  border-color: var(--primary);
+  font-weight: 600;
+}
+ 
+/* ✅ Project card smooth hide/show transition */
+.project-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+ 
+@media (max-width: 480px) {
+  .filter-btn { font-size: 0.78rem; padding: 6px 14px; }
 }
