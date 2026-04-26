@@ -1,3 +1,6 @@
+
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -53,11 +56,11 @@
     <div class="about-content">
       <div class="about-text card">
         <p>
-          I'm a passionate <strong>B.Tech CSE (AI)</strong> student who loves building 
+          I'm a passionate <strong>B.Tech CSE (AI)</strong> student who loves building
           real-world automation systems using <strong>Java (Spring Boot)</strong> and <strong>n8n</strong>.
         </p>
         <p>
-          My goal is to bridge the gap between <strong>Artificial Intelligence</strong> and 
+          My goal is to bridge the gap between <strong>Artificial Intelligence</strong> and
           backend operations — creating systems that are smart, scalable, and actually useful.
         </p>
         <div class="skills-row">
@@ -109,15 +112,20 @@
     </div>
   </section>
  
-  <!-- Projects Section -->
+  <!-- Projects Section — ✅ Filter added -->
   <section id="projects">
     <div class="section-header">
       <h2>Featured Projects</h2>
       <div class="line"></div>
     </div>
+ 
+    <!-- ✅ Filter buttons yahan aayenge (JS se auto fill) -->
+    <div id="filter-buttons" class="filter-container"></div>
+ 
     <div class="projects-grid">
  
-      <div class="card">
+      <!-- ✅ class="project-card" aur data-tags add kiya -->
+      <div class="card project-card" data-tags="n8n,Java,API">
         <div class="card-icon"><i class="fab fa-whatsapp"></i></div>
         <h3>Smart WhatsApp Bot</h3>
         <p>Automated order tracking system using Spring Boot and WhatsApp Business API. Handles real-time notifications and customer queries.</p>
@@ -132,7 +140,8 @@
         </div>
       </div>
  
-      <div class="card">
+      <!-- ✅ class="project-card" aur data-tags add kiya -->
+      <div class="card project-card" data-tags="Python,AI/ML">
         <div class="card-icon"><i class="fas fa-microchip"></i></div>
         <h3>AI Analysis Tool</h3>
         <p>Analyzing datasets to predict patterns using modern AI models. Built for fast insights from raw data.</p>
@@ -146,12 +155,12 @@
         </div>
       </div>
  
-      <!-- 🔧 Yahan new projects add karna hai future me -->
+      <!-- 🔧 Naya project add karna ho to data-tags zaroor daalna -->
  
     </div>
   </section>
  
-  <!-- ✅ GitHub Stats Section -->
+  <!-- GitHub Stats Section -->
   <section id="github">
     <div class="section-header">
       <h2>GitHub Stats</h2>
