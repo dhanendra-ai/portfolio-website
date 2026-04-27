@@ -7,6 +7,7 @@
  *   - Custom Cursor
  *   - Contact Form
  *   - Navbar Active State
+ *   - ✅ Project Card Filter by Tag
  * ============================================
  */
 
@@ -42,11 +43,11 @@ function typeEffect() {
 
   if (!isDeleting && charIndex === currentPhrase.length) {
     isDeleting = true;
-    typeSpeed = 2000; // Pause before deleting
+    typeSpeed = 2000;
   } else if (isDeleting && charIndex === 0) {
     isDeleting = false;
     phraseIndex = (phraseIndex + 1) % phrases.length;
-    typeSpeed = 500; // Pause before next phrase
+    typeSpeed = 500;
   }
 
   setTimeout(typeEffect, typeSpeed);
@@ -91,19 +92,16 @@ function initCursor() {
     const x = e.clientX;
     const y = e.clientY;
 
-    // Dot follows instantly
     cursorDot.style.left = `${x}px`;
     cursorDot.style.top = `${y}px`;
 
-    // Outline follows with smooth animation
     cursorOutline.animate(
       { left: `${x}px`, top: `${y}px` },
       { duration: 400, fill: "forwards" }
     );
   });
 
-  // Expand cursor on hover over interactive elements
-  const interactives = document.querySelectorAll("a, button, .card");
+  const interactives = document.querySelectorAll("a, button, .card, .filter-btn");
   interactives.forEach((el) => {
     el.addEventListener("mouseenter", () => {
       cursorOutline.style.width = "50px";
@@ -168,7 +166,71 @@ function initNavHighlight() {
 }
 
 // ============================================
-// 6. INJECT TYPING CURSOR STYLE
+// 6. ✅ PROJECT CARD FILTER BY TAG
+// ============================================
+function initProjectFilter() {
+  const filterContainer = document.getElementById("filter-buttons");
+  const cards = document.querySelectorAll(".project-card");
+
+  if (!filterContainer || cards.length === 0) return;
+
+  // Sabhi unique tags collect karo
+  const allTags = new Set();
+  cards.forEach((card) => {
+    const tags = card.getAttribute("data-tags").split(",");
+    tags.forEach((tag) => allTags.add(tag.trim()));
+  });
+
+  // "All" button banao
+  const allBtn = document.createElement("button");
+  allBtn.textContent = "All";
+  allBtn.classList.add("filter-btn", "active");
+  allBtn.setAttribute("data-filter", "all");
+  filterContainer.appendChild(allBtn);
+
+  // Har tag ke liye button banao
+  allTags.forEach((tag) => {
+    const btn = document.createElement("button");
+    btn.textContent = tag;
+    btn.classList.add("filter-btn");
+    btn.setAttribute("data-filter", tag);
+    filterContainer.appendChild(btn);
+  });
+
+  // Filter click logic
+  filterContainer.addEventListener("click", (e) => {
+    if (!e.target.classList.contains("filter-btn")) return;
+
+    // Active button update karo
+    document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
+    e.target.classList.add("active");
+
+    const selected = e.target.getAttribute("data-filter");
+
+    cards.forEach((card) => {
+      const cardTags = card.getAttribute("data-tags").split(",").map((t) => t.trim());
+
+      if (selected === "all" || cardTags.includes(selected)) {
+        // Card dikhao
+        card.style.display = "block";
+        setTimeout(() => {
+          card.style.opacity = "1";
+          card.style.transform = "translateY(0)";
+        }, 10);
+      } else {
+        // Card chhupao with animation
+        card.style.opacity = "0";
+        card.style.transform = "translateY(20px)";
+        setTimeout(() => {
+          card.style.display = "none";
+        }, 300);
+      }
+    });
+  });
+}
+
+// ============================================
+// 7. INJECT TYPING CURSOR STYLE
 // ============================================
 function injectStyles() {
   const style = document.createElement("style");
@@ -197,6 +259,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initCursor();
   initForm();
   initNavHighlight();
+  initProjectFilter(); // ✅ NEW
 
   console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
