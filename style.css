@@ -163,10 +163,7 @@ nav a:hover::after { width: 100%; }
   100% { transform: translateY(0) rotate(360deg); opacity: 0.5; }
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-}
+.hero-content { position: relative; z-index: 2; }
 
 .hero-greeting {
   font-size: 1.1rem;
@@ -250,9 +247,7 @@ nav a:hover::after { width: 100%; }
 /* ============================================
    SECTION COMMON
    ============================================ */
-section {
-  padding: 80px 10%;
-}
+section { padding: 80px 10%; }
 
 .section-header {
   text-align: center;
@@ -275,10 +270,7 @@ section {
 /* ============================================
    ABOUT SECTION
    ============================================ */
-.about-content {
-  max-width: 700px;
-  margin: 0 auto;
-}
+.about-content { max-width: 700px; margin: 0 auto; }
 
 .about-text p {
   color: var(--text-muted);
@@ -346,11 +338,9 @@ section {
 .timeline-container::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 50%;
+  top: 0; left: 50%;
   transform: translateX(-50%);
-  width: 2px;
-  height: 100%;
+  width: 2px; height: 100%;
   background: linear-gradient(to bottom, transparent, var(--primary), transparent);
   opacity: 0.4;
 }
@@ -371,11 +361,9 @@ section {
 
 .timeline-dot {
   position: absolute;
-  top: 25px;
-  left: 50%;
+  top: 25px; left: 50%;
   transform: translate(-50%, -50%);
-  width: 16px;
-  height: 16px;
+  width: 16px; height: 16px;
   background: var(--bg-dark);
   border: 3px solid var(--primary);
   border-radius: 50%;
@@ -388,28 +376,10 @@ section {
   transform: translate(-50%, -50%) scale(1.3);
 }
 
-.timeline-content {
-  width: 90%;
-}
-
-.timeline-content h3 {
-  color: var(--primary);
-  font-size: 1.1rem;
-  margin-bottom: 6px;
-}
-
-.timeline-date {
-  font-size: 0.8rem;
-  color: var(--text-muted);
-  margin-bottom: 10px;
-  display: block;
-}
-
-.timeline-content p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.7;
-}
+.timeline-content { width: 90%; }
+.timeline-content h3 { color: var(--primary); font-size: 1.1rem; margin-bottom: 6px; }
+.timeline-date { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 10px; display: block; }
+.timeline-content p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
 
 /* ============================================
    PROJECTS GRID
@@ -420,31 +390,11 @@ section {
   gap: 25px;
 }
 
-.card-icon {
-  font-size: 2.5rem;
-  color: var(--primary);
-  margin-bottom: 20px;
-}
+.card-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
+.card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+.card p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 15px; }
 
-.card h3 {
-  font-size: 1.2rem;
-  margin-bottom: 12px;
-}
-
-.card p {
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  line-height: 1.7;
-  margin-bottom: 15px;
-}
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-bottom: 20px;
-}
-
+.tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .tags span {
   font-size: 0.78rem;
   background: rgba(56, 189, 248, 0.08);
@@ -454,12 +404,7 @@ section {
   border: 1px solid rgba(56, 189, 248, 0.2);
 }
 
-.card-links {
-  display: flex;
-  gap: 12px;
-  margin-top: 10px;
-}
-
+.card-links { display: flex; gap: 12px; margin-top: 10px; }
 .card-link {
   color: var(--text-muted);
   text-decoration: none;
@@ -470,164 +415,15 @@ section {
   transition: color 0.3s;
   cursor: none;
 }
-
 .card-link:hover { color: var(--primary); }
 
-/* ============================================
-   CONTACT
-   ============================================ */
-.contact-container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  padding: 15px 18px;
-  border-radius: 12px;
-  border: 1px solid var(--border);
-  background: rgba(2, 6, 23, 0.6);
-  color: white;
-  font-family: 'Poppins', sans-serif;
-  font-size: 0.95rem;
-  outline: none;
-  transition: all 0.3s;
-}
-
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--primary);
-  background: rgba(2, 6, 23, 0.9);
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
-}
-
-.contact-form textarea { resize: vertical; min-height: 130px; }
-
-.socials {
-  margin-top: 30px;
-  text-align: center;
-}
-
-.socials p {
-  color: var(--text-muted);
-  margin-bottom: 12px;
-  font-size: 0.9rem;
-}
-
-.socials a {
-  color: var(--text-muted);
-  font-size: 1.5rem;
-  margin: 0 10px;
-  transition: all 0.3s;
-  cursor: none;
-}
-
-.socials a:hover {
-  color: var(--primary);
-  transform: translateY(-3px);
-  display: inline-block;
+/* Project card smooth transition */
+.project-card {
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 /* ============================================
-   FOOTER
-   ============================================ */
-footer {
-  text-align: center;
-  padding: 35px;
-  background: #010409;
-  border-top: 1px solid var(--border);
-}
-
-footer p { color: var(--text-muted); font-size: 0.9rem; }
-footer strong { color: white; }
-
-/* ============================================
-   SCROLL REVEAL ANIMATIONS
-   ============================================ */
-.reveal-hidden {
-  opacity: 0;
-  transform: translateY(35px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-@media (max-width: 768px) {
-  nav { padding: 1rem 5%; }
-  nav ul { gap: 15px; }
-  section { padding: 60px 5%; }
-
-  .timeline-container::before { left: 20px; }
-  .timeline-item { justify-content: flex-start; padding-right: 0; padding-left: 50px; }
-  .timeline-item:nth-child(even) { padding-left: 50px; }
-  .timeline-dot { left: 20px; }
-  .timeline-content { width: 100%; margin: 0; }
-}
-
-@media (max-width: 480px) {
-  nav ul { display: none; }
-  .hero h1 { font-size: 2.2rem; }
-}
-
-/* ============================================
-   GITHUB STATS SECTION
-   ============================================ */
-.github-stats-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.github-card {
-  background: rgba(13, 17, 23, 0.8);
-  border: 1px solid rgba(56, 189, 248, 0.15);
-  border-radius: 16px;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  transition: all 0.4s ease;
-}
-
-.github-card:hover {
-  border-color: rgba(56, 189, 248, 0.5);
-  transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-}
-
-.github-card img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  display: block;
-}
-
-.github-card-full {
-  grid-column: 1 / -1;
-}
-
-@media (max-width: 768px) {
-  .github-card-full { grid-column: 1; }
-}
-
-/* ============================================
-   ✅ PROJECT FILTER BUTTONS
+   FILTER BUTTONS
    ============================================ */
 .filter-container {
   display: flex;
@@ -663,11 +459,165 @@ footer strong { color: white; }
   font-weight: 600;
 }
 
-/* ✅ Project card smooth hide/show transition */
-.project-card {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+/* ============================================
+   CONTACT
+   ============================================ */
+.contact-container { max-width: 600px; margin: 0 auto; }
+
+.contact-form { display: flex; flex-direction: column; gap: 15px; }
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 15px 18px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(2, 6, 23, 0.6);
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.95rem;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--primary);
+  background: rgba(2, 6, 23, 0.9);
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.1);
+}
+
+.contact-form textarea { resize: vertical; min-height: 130px; }
+
+.socials { margin-top: 30px; text-align: center; }
+.socials p { color: var(--text-muted); margin-bottom: 12px; font-size: 0.9rem; }
+.socials a {
+  color: var(--text-muted);
+  font-size: 1.5rem;
+  margin: 0 10px;
+  transition: all 0.3s;
+  cursor: none;
+}
+.socials a:hover { color: var(--primary); transform: translateY(-3px); display: inline-block; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+footer {
+  text-align: center;
+  padding: 35px;
+  background: #010409;
+  border-top: 1px solid var(--border);
+}
+
+footer p { color: var(--text-muted); font-size: 0.9rem; }
+footer strong { color: white; }
+
+/* ============================================
+   SCROLL REVEAL
+   ============================================ */
+.reveal-hidden {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ============================================
+   GITHUB STATS
+   ============================================ */
+.github-stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.github-card {
+  background: rgba(13, 17, 23, 0.8);
+  border: 1px solid rgba(56, 189, 248, 0.15);
+  border-radius: 16px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.github-card:hover {
+  border-color: rgba(56, 189, 248, 0.5);
+  transform: translateY(-6px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+}
+
+.github-card img { width: 100%; height: auto; border-radius: 10px; display: block; }
+.github-card-full { grid-column: 1 / -1; }
+
+/* ============================================
+   ✅ BACK TO TOP BUTTON
+   ============================================ */
+#back-to-top {
+  position: fixed;
+  bottom: 35px;
+  right: 35px;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: white;
+  border: 2px solid rgba(56, 189, 248, 0.4);
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  z-index: 999;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease, box-shadow 0.3s ease, background 0.3s ease;
+  pointer-events: none;
+}
+
+/* Visible state — JS se .show class add hogi */
+#back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: all;
+}
+
+#back-to-top:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  box-shadow: 0 0 20px rgba(56, 189, 248, 0.5);
+  transform: translateY(-4px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  nav { padding: 1rem 5%; }
+  nav ul { gap: 15px; }
+  section { padding: 60px 5%; }
+
+  .timeline-container::before { left: 20px; }
+  .timeline-item { justify-content: flex-start; padding-right: 0; padding-left: 50px; }
+  .timeline-item:nth-child(even) { padding-left: 50px; }
+  .timeline-dot { left: 20px; }
+  .timeline-content { width: 100%; margin: 0; }
+  .github-card-full { grid-column: 1; }
+
+  #back-to-top { bottom: 20px; right: 20px; width: 42px; height: 42px; }
 }
 
 @media (max-width: 480px) {
+  nav ul { display: none; }
+  .hero h1 { font-size: 2.2rem; }
   .filter-btn { font-size: 0.78rem; padding: 6px 14px; }
 }
