@@ -7,7 +7,8 @@
  *   - Custom Cursor
  *   - Contact Form
  *   - Navbar Active State
- *   - ✅ Project Card Filter by Tag
+ *   - Project Card Filter by Tag
+ *   - ✅ Back to Top Button
  * ============================================
  */
 
@@ -166,7 +167,7 @@ function initNavHighlight() {
 }
 
 // ============================================
-// 6. ✅ PROJECT CARD FILTER BY TAG
+// 6. PROJECT CARD FILTER BY TAG
 // ============================================
 function initProjectFilter() {
   const filterContainer = document.getElementById("filter-buttons");
@@ -174,21 +175,18 @@ function initProjectFilter() {
 
   if (!filterContainer || cards.length === 0) return;
 
-  // Sabhi unique tags collect karo
   const allTags = new Set();
   cards.forEach((card) => {
     const tags = card.getAttribute("data-tags").split(",");
     tags.forEach((tag) => allTags.add(tag.trim()));
   });
 
-  // "All" button banao
   const allBtn = document.createElement("button");
   allBtn.textContent = "All";
   allBtn.classList.add("filter-btn", "active");
   allBtn.setAttribute("data-filter", "all");
   filterContainer.appendChild(allBtn);
 
-  // Har tag ke liye button banao
   allTags.forEach((tag) => {
     const btn = document.createElement("button");
     btn.textContent = tag;
@@ -197,11 +195,9 @@ function initProjectFilter() {
     filterContainer.appendChild(btn);
   });
 
-  // Filter click logic
   filterContainer.addEventListener("click", (e) => {
     if (!e.target.classList.contains("filter-btn")) return;
 
-    // Active button update karo
     document.querySelectorAll(".filter-btn").forEach((b) => b.classList.remove("active"));
     e.target.classList.add("active");
 
@@ -211,14 +207,12 @@ function initProjectFilter() {
       const cardTags = card.getAttribute("data-tags").split(",").map((t) => t.trim());
 
       if (selected === "all" || cardTags.includes(selected)) {
-        // Card dikhao
         card.style.display = "block";
         setTimeout(() => {
           card.style.opacity = "1";
           card.style.transform = "translateY(0)";
         }, 10);
       } else {
-        // Card chhupao with animation
         card.style.opacity = "0";
         card.style.transform = "translateY(20px)";
         setTimeout(() => {
@@ -230,7 +224,29 @@ function initProjectFilter() {
 }
 
 // ============================================
-// 7. INJECT TYPING CURSOR STYLE
+// 7. ✅ BACK TO TOP BUTTON
+// ============================================
+function initBackToTop() {
+  const btn = document.getElementById("back-to-top");
+  if (!btn) return;
+
+  // 300px scroll ke baad button dikhao
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      btn.classList.add("show");
+    } else {
+      btn.classList.remove("show");
+    }
+  });
+
+  // Click pe smoothly top pe scroll karo
+  btn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// ============================================
+// 8. INJECT TYPING CURSOR STYLE
 // ============================================
 function injectStyles() {
   const style = document.createElement("style");
@@ -259,7 +275,8 @@ window.addEventListener("DOMContentLoaded", () => {
   initCursor();
   initForm();
   initNavHighlight();
-  initProjectFilter(); // ✅ NEW
+  initProjectFilter();
+  initBackToTop(); // ✅ NEW
 
   console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
