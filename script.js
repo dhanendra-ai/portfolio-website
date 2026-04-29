@@ -244,7 +244,38 @@ function initBackToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
+// ============================================
+// ✅ HAMBURGER MENU
+// ============================================
+function initHamburger() {
+  const hamburger = document.getElementById("hamburger");
+  const mobileNav = document.getElementById("mobile-nav");
+  const mobileLinks = document.querySelectorAll(".mobile-link");
 
+  if (!hamburger || !mobileNav) return;
+
+  // Toggle menu on hamburger click
+  hamburger.addEventListener("click", () => {
+    hamburger.classList.toggle("open");
+    mobileNav.classList.toggle("open");
+  });
+
+  // Close menu when any link is clicked
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      hamburger.classList.remove("open");
+      mobileNav.classList.remove("open");
+    });
+  });
+
+  // Close menu on outside click
+  document.addEventListener("click", (e) => {
+    if (!hamburger.contains(e.target) && !mobileNav.contains(e.target)) {
+      hamburger.classList.remove("open");
+      mobileNav.classList.remove("open");
+    }
+  });
+}
 // ============================================
 // 8. INJECT TYPING CURSOR STYLE
 // ============================================
@@ -276,7 +307,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initForm();
   initNavHighlight();
   initProjectFilter();
-  initBackToTop(); // ✅ NEW
-
+  initBackToTop(); 
+  initHamburger();// ✅ NEW
   console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
