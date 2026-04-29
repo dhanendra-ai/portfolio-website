@@ -621,3 +621,91 @@ footer strong { color: white; }
   .hero h1 { font-size: 2.2rem; }
   .filter-btn { font-size: 0.78rem; padding: 6px 14px; }
 }
+/* ============================================
+   ✅ HAMBURGER MENU (Mobile)
+   ============================================ */
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: none;
+  z-index: 1100;
+  padding: 5px;
+}
+
+.hamburger span {
+  display: block;
+  width: 25px;
+  height: 2px;
+  background: white;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* X shape jab open ho */
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* Mobile nav drawer */
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 65px;
+  left: 0;
+  width: 100%;
+  background: rgba(2, 6, 23, 0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.15);
+  z-index: 999;
+  padding: 20px 0;
+  transform: translateY(-10px);
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.mobile-nav.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: all;
+}
+
+.mobile-nav ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.mobile-nav ul li a {
+  display: block;
+  padding: 12px 30px;
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s;
+  width: 100%;
+  text-align: center;
+}
+
+.mobile-nav ul li a:hover {
+  color: var(--primary);
+}
+
+/* Mobile pe hamburger dikhao, nav ul chhupao */
+@media (max-width: 480px) {
+  nav ul { display: none; }
+  .hamburger { display: flex; }
+  .mobile-nav { display: block; }
+}
