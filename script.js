@@ -245,6 +245,33 @@ function initBackToTop() {
   });
 }
 // ============================================
+// ✅ THEME TOGGLE — Dark / Light Mode
+// ============================================
+function initThemeToggle() {
+  const btn = document.getElementById("theme-toggle");
+  if (!btn) return;
+
+  // Pehle se saved theme check karo
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    document.body.classList.add("light-mode");
+    btn.innerHTML = '<i class="fas fa-sun"></i>';
+  }
+
+  btn.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    const isLight = document.body.classList.contains("light-mode");
+
+    // Icon change karo
+    btn.innerHTML = isLight
+      ? '<i class="fas fa-sun"></i>'
+      : '<i class="fas fa-moon"></i>';
+
+    // localStorage me save karo — page reload pe bhi yaad rahe
+    localStorage.setItem("theme", isLight ? "light" : "dark");
+  });
+}
+// ============================================
 // ✅ HAMBURGER MENU
 // ============================================
 function initHamburger() {
@@ -308,6 +335,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initNavHighlight();
   initProjectFilter();
   initBackToTop(); 
-  initHamburger();// ✅ NEW
+  initHamburger();
+  initThemeToggle(); // ✅ NEW
   console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
