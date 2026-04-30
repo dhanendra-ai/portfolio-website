@@ -708,4 +708,70 @@ footer strong { color: white; }
   nav ul { display: none; }
   .hamburger { display: flex; }
   .mobile-nav { display: block; }
+  .mobile-nav { display: block; }
 }
+/* ============================================
+   ✅ THEME TOGGLE — Light Mode Variables
+   ============================================ */
+body.light-mode {
+  --bg-dark: #f0f4f8;
+  --bg-card: rgba(255, 255, 255, 0.85);
+  --text-muted: #475569;
+  --border: rgba(0, 0, 0, 0.08);
+  color: #0f172a;
+}
+
+body.light-mode nav {
+  background: rgba(240, 244, 248, 0.92);
+}
+
+body.light-mode .hero {
+  background: radial-gradient(ellipse at center, #dbeafe 0%, #f0f4f8 70%);
+}
+
+body.light-mode .hero-desc {
+  color: #64748b;
+}
+
+body.light-mode footer {
+  background: #e2e8f0;
+}
+
+body.light-mode .mobile-nav {
+  background: rgba(240, 244, 248, 0.97);
+}
+
+body.light-mode .contact-form input,
+body.light-mode .contact-form textarea {
+  background: rgba(255, 255, 255, 0.9);
+  color: #0f172a;
+  border-color: rgba(0, 0, 0, 0.15);
+}
+
+body.light-mode .timeline-dot {
+  background: var(--bg-dark);
+}
+
+/* Theme Toggle Button Style */
+#theme-toggle {
+  background: transparent;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--text-muted);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  cursor: none;
+  transition: all 0.3s ease;
+  margin-left: 15px;
+}
+
+#theme-toggle:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+  transform: rotate(20deg);
+}
+
