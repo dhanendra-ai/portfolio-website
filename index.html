@@ -4,58 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Dhanendra Sahu | AI Developer Portfolio</title>
+
+  <!-- SEO Meta Tags -->
+  <meta name="description" content="Portfolio of Dhanendra Sahu — B.Tech CSE (AI) student, Java & Spring Boot developer, AI/ML enthusiast building real-world automation systems.">
+  <meta name="keywords" content="Dhanendra Sahu, Java Developer, Spring Boot, AI, n8n, Portfolio, Backend Developer, Automation">
+  <meta name="author" content="Dhanendra Sahu">
+  <link rel="canonical" href="https://dhanendra-ai.github.io">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dhanendra Sahu | AI Developer Portfolio">
+  <meta property="og:description" content="B.Tech CSE (AI) student building smart, scalable backend systems with Java, Spring Boot, and n8n.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://dhanendra-ai.github.io">
+  <meta property="og:image" content="https://dhanendra-ai.github.io/og-image.jpg">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dhanendra Sahu | AI Developer Portfolio">
+  <meta name="twitter:description" content="B.Tech CSE (AI) student building smart, scalable backend systems with Java, Spring Boot, and n8n.">
+  <meta name="twitter:image" content="https://dhanendra-ai.github.io/og-image.jpg">
+
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+
   <link rel="stylesheet" href="style.css">
+<base target="_blank">
 </head>
 <body>
 
   <!-- Custom Cursor -->
-  <div class="cursor-dot" id="cursor-dot"></div>
-  <div class="cursor-outline" id="cursor-outline"></div>
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-outline" id="cursor-outline" aria-hidden="true"></div>
 
-  <!-- ✅ Back to Top Button -->
-  <button id="back-to-top" title="Back to Top">
-    <i class="fas fa-arrow-up"></i>
+  <!-- Back to Top Button -->
+  <button id="back-to-top" title="Back to Top" aria-label="Back to top">
+    <i class="fas fa-arrow-up" aria-hidden="true"></i>
   </button>
 
   <!-- Navigation -->
   <nav>
-    <div class="logo">Dhanendra<span>.ai</span></div>
-    
-    <div class="nav-right" style="display: flex; align-items: center; gap: 20px;">
-        <button id="theme-toggle" title="Toggle Theme">
-            <i class="fas fa-moon"></i>
-        </button>
+    <a href="#home" class="logo" aria-label="Home">Dhanendra<span>.ai</span></a>
 
-        <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#education">Journey</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#blog">Blog</a></li>
-            <li><a href="#github">GitHub</a></li>
-            <li><a href="#contact">Contact</a></li>
-        </ul>
+    <div class="nav-right">
+      <button id="theme-toggle" title="Toggle Theme" aria-label="Toggle dark/light theme">
+        <i class="fas fa-moon" aria-hidden="true"></i>
+      </button>
+
+      <ul class="desktop-nav">
+        <li><a href="#about">About</a></li>
+        <li><a href="#education">Journey</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#github">GitHub</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <!-- Hamburger Menu Button (Mobile only) -->
+      <div class="hamburger" id="hamburger" aria-label="Toggle navigation" aria-expanded="false" role="button" tabindex="0">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
-</nav>
-<!-- ✅ Hamburger Menu Button (Mobile only) -->
-<div class="hamburger" id="hamburger">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+  </nav>
 
-<!-- ✅ Mobile Nav Menu -->
-<div class="mobile-nav" id="mobile-nav">
-  <ul>
-    <li><a href="#about" class="mobile-link">About</a></li>
-    <li><a href="#education" class="mobile-link">Journey</a></li>
-    <li><a href="#projects" class="mobile-link">Projects</a></li>
-    <li><a href="#blog" class="mobile-link">Blog</a></li>
-    <li><a href="#github" class="mobile-link">GitHub</a></li>
-    <li><a href="#contact" class="mobile-link">Contact</a></li>
-  </ul>
-</div>
+  <!-- Mobile Nav Menu -->
+  <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+    <ul>
+      <li><a href="#about" class="mobile-link">About</a></li>
+      <li><a href="#education" class="mobile-link">Journey</a></li>
+      <li><a href="#projects" class="mobile-link">Projects</a></li>
+      <li><a href="#blog" class="mobile-link">Blog</a></li>
+      <li><a href="#github" class="mobile-link">GitHub</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
+  </div>
+
   <!-- Hero Section -->
   <section class="hero" id="home">
     <div class="hero-content">
@@ -66,9 +91,12 @@
       <div class="hero-btns">
         <a href="#contact" class="btn">Let's Talk</a>
         <a href="#projects" class="btn btn-outline">My Work</a>
+        <a href="Dhanendra_Sahu_Resume.pdf" download class="btn btn-outline" id="resume-btn">
+          <i class="fas fa-download" aria-hidden="true"></i> Download CV
+        </a>
       </div>
     </div>
-    <div class="hero-bg">
+    <div class="hero-bg" aria-hidden="true">
       <span></span><span></span><span></span>
       <span></span><span></span><span></span>
     </div>
@@ -91,11 +119,11 @@
           backend operations — creating systems that are smart, scalable, and actually useful.
         </p>
         <div class="skills-row">
-          <span class="skill-badge"><i class="fab fa-java"></i> Java</span>
-          <span class="skill-badge"><i class="fas fa-leaf"></i> Spring Boot</span>
-          <span class="skill-badge"><i class="fas fa-robot"></i> n8n</span>
-          <span class="skill-badge"><i class="fab fa-python"></i> Python</span>
-          <span class="skill-badge"><i class="fas fa-brain"></i> AI/ML</span>
+          <span class="skill-badge"><i class="fab fa-java" aria-hidden="true"></i> Java</span>
+          <span class="skill-badge"><i class="fas fa-leaf" aria-hidden="true"></i> Spring Boot</span>
+          <span class="skill-badge"><i class="fas fa-robot" aria-hidden="true"></i> n8n</span>
+          <span class="skill-badge"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
+          <span class="skill-badge"><i class="fas fa-brain" aria-hidden="true"></i> AI/ML</span>
         </div>
       </div>
     </div>
@@ -146,13 +174,13 @@
       <div class="line"></div>
     </div>
 
-    <!-- Filter buttons — JS se auto fill -->
+    <!-- Filter buttons -->
     <div id="filter-buttons" class="filter-container"></div>
 
     <div class="projects-grid">
 
-      <div class="card project-card" data-tags="n8n,Java,API">
-        <div class="card-icon"><i class="fab fa-whatsapp"></i></div>
+      <div class="card project-card" data-tags="n8n,Java,API" data-status="live">
+        <div class="card-icon"><i class="fab fa-whatsapp" aria-hidden="true"></i></div>
         <h3>Smart WhatsApp Bot</h3>
         <p>Automated order tracking system using Spring Boot and WhatsApp Business API. Handles real-time notifications and customer queries.</p>
         <div class="tags">
@@ -161,13 +189,17 @@
           <span>API</span>
         </div>
         <div class="card-links">
-          <a href="#" class="card-link"><i class="fab fa-github"></i> Code</a>
-          <a href="#" class="card-link"><i class="fas fa-external-link-alt"></i> Live</a>
+          <a href="https://github.com/dhanendra-ai/whatsapp-bot" class="card-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github" aria-hidden="true"></i> Code
+          </a>
+          <a href="#" class="card-link coming-soon" data-status="coming-soon">
+            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live
+          </a>
         </div>
       </div>
 
-      <div class="card project-card" data-tags="Python,AI/ML">
-        <div class="card-icon"><i class="fas fa-microchip"></i></div>
+      <div class="card project-card" data-tags="Python,AI/ML" data-status="live">
+        <div class="card-icon"><i class="fas fa-microchip" aria-hidden="true"></i></div>
         <h3>AI Analysis Tool</h3>
         <p>Analyzing datasets to predict patterns using modern AI models. Built for fast insights from raw data.</p>
         <div class="tags">
@@ -175,18 +207,19 @@
           <span>AI/ML</span>
         </div>
         <div class="card-links">
-          <a href="#" class="card-link"><i class="fab fa-github"></i> Code</a>
-          <a href="#" class="card-link"><i class="fas fa-external-link-alt"></i> Live</a>
+          <a href="https://github.com/dhanendra-ai/ai-analysis-tool" class="card-link" target="_blank" rel="noopener noreferrer">
+            <i class="fab fa-github" aria-hidden="true"></i> Code
+          </a>
+          <a href="#" class="card-link coming-soon" data-status="coming-soon">
+            <i class="fas fa-external-link-alt" aria-hidden="true"></i> Live
+          </a>
         </div>
       </div>
-
-      <!-- 🔧 Naya project add karna ho to data-tags zaroor daalna -->
 
     </div>
   </section>
 
-  <!-- GitHub Stats Section -->
-   <!-- ✅ Blog / Articles Section -->
+  <!-- Blog / Articles Section -->
   <section id="blog">
     <div class="section-header">
       <h2>Blog & Articles</h2>
@@ -194,44 +227,52 @@
     </div>
     <div class="blog-grid">
 
-      <div class="blog-card">
+      <article class="blog-card">
         <div class="blog-thumbnail">
-          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=200&fit=crop" alt="Java Spring Boot"/>
+          <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=400&h=200&fit=crop" alt="Java Spring Boot code on screen" loading="lazy">
           <span class="blog-tag">Java</span>
         </div>
         <div class="blog-body">
           <h3>Getting Started with Spring Boot Automation</h3>
           <p>Learn how to build powerful backend automation systems using Spring Boot and REST APIs in just a few steps.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="blog-read-more" aria-label="Read more about Spring Boot Automation">
+            Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
-      </div>
+      </article>
 
-      <div class="blog-card">
+      <article class="blog-card">
         <div class="blog-thumbnail">
-          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&h=200&fit=crop" alt="AI ML"/>
+          <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=400&h=200&fit=crop" alt="AI and machine learning visualization" loading="lazy">
           <span class="blog-tag">AI/ML</span>
         </div>
         <div class="blog-body">
           <h3>How I Built My First AI Analysis Tool</h3>
           <p>A practical walkthrough of building a dataset analysis tool using Python and modern machine learning models.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="blog-read-more" aria-label="Read more about AI Analysis Tool">
+            Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
-      </div>
+      </article>
 
-      <div class="blog-card">
+      <article class="blog-card">
         <div class="blog-thumbnail">
-          <img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=400&h=200&fit=crop" alt="n8n Automation"/>
+          <img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?w=400&h=200&fit=crop" alt="n8n automation workflow" loading="lazy">
           <span class="blog-tag">n8n</span>
         </div>
         <div class="blog-body">
           <h3>Automating Workflows with n8n — Beginner Guide</h3>
           <p>Discover how n8n can replace hours of manual work with smart, no-code automation pipelines for real business use.</p>
-          <a href="#" class="blog-read-more">Read More <i class="fas fa-arrow-right"></i></a>
+          <a href="#" class="blog-read-more" aria-label="Read more about n8n Automation">
+            Read More <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
-      </div>
+      </article>
 
     </div>
   </section>
+
+  <!-- GitHub Stats Section -->
   <section id="github">
     <div class="section-header">
       <h2>GitHub Stats</h2>
@@ -243,6 +284,8 @@
         <img
           src="https://github-readme-stats.vercel.app/api?username=dhanendra-ai&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=38bdf8&icon_color=38bdf8&text_color=94a3b8"
           alt="GitHub Stats"
+          loading="lazy"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class=\'github-fallback\'>Stats unavailable</p>'"
         />
       </div>
 
@@ -250,6 +293,8 @@
         <img
           src="https://github-readme-stats.vercel.app/api/top-langs/?username=dhanendra-ai&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=38bdf8&text_color=94a3b8"
           alt="Top Languages"
+          loading="lazy"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class=\'github-fallback\'>Stats unavailable</p>'"
         />
       </div>
 
@@ -257,13 +302,15 @@
         <img
           src="https://github-readme-streak-stats.herokuapp.com/?user=dhanendra-ai&theme=tokyonight&hide_border=true&background=0d1117&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8"
           alt="GitHub Streak"
+          loading="lazy"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class=\'github-fallback\'>Stats unavailable</p>'"
         />
       </div>
 
     </div>
     <div style="text-align:center; margin-top: 35px;">
-      <a href="https://github.com/dhanendra-ai" target="_blank" class="btn">
-        <i class="fab fa-github"></i> View GitHub Profile
+      <a href="https://github.com/dhanendra-ai" target="_blank" rel="noopener noreferrer" class="btn">
+        <i class="fab fa-github" aria-hidden="true"></i> View GitHub Profile
       </a>
     </div>
   </section>
@@ -275,24 +322,48 @@
       <div class="line"></div>
     </div>
     <div class="contact-container">
-      <form id="contact-form" class="contact-form">
-        <input type="text" placeholder="Your Name" required>
-        <input type="email" placeholder="Your Email" required>
-        <textarea placeholder="Your Message" rows="5" required></textarea>
-        <button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button>
+      <form id="contact-form" class="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" novalidate>
+        <div class="form-group">
+          <input type="text" name="name" placeholder="Your Name" required minlength="2" aria-label="Your name">
+          <span class="error-msg" id="name-error"></span>
+        </div>
+        <div class="form-group">
+          <input type="email" name="email" placeholder="Your Email" required aria-label="Your email">
+          <span class="error-msg" id="email-error"></span>
+        </div>
+        <div class="form-group">
+          <textarea name="message" placeholder="Your Message" rows="5" required minlength="10" aria-label="Your message"></textarea>
+          <span class="error-msg" id="message-error"></span>
+        </div>
+        <button type="submit" class="btn">
+          <span class="btn-text">Send Message</span> 
+          <i class="fas fa-paper-plane" aria-hidden="true"></i>
+        </button>
       </form>
       <div class="socials">
         <p>Or connect via:</p>
-        <a href="https://github.com/dhanendra-ai" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        <a href="https://linkedin.com/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:dhanendra1303@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+        <div class="social-links">
+          <a href="https://github.com/dhanendra-ai" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" title="GitHub">
+            <i class="fab fa-github" aria-hidden="true"></i>
+          </a>
+          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" title="LinkedIn">
+            <i class="fab fa-linkedin" aria-hidden="true"></i>
+          </a>
+          <a href="mailto:dhanendra1303@gmail.com" aria-label="Send email" title="Email">
+            <i class="fas fa-envelope" aria-hidden="true"></i>
+          </a>
+          <button class="copy-email" id="copy-email" aria-label="Copy email address" title="Copy email">
+            <i class="fas fa-copy" aria-hidden="true"></i>
+          </button>
+        </div>
+        <span class="copy-feedback" id="copy-feedback" aria-live="polite"></span>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer>
-    <p>© 2026 <strong>Dhanendra Sahu</strong> | Built with ❤️ & Passion</p>
+    <p>© <span id="year">2026</span> <strong>Dhanendra Sahu</strong> | Built with ❤️ & Passion</p>
     <p style="font-size:0.8rem; color:#475569; margin-top:5px;">Always learning. Always building.</p>
   </footer>
 
