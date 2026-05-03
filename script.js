@@ -523,6 +523,8 @@ window.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initCopyEmail();
   initDynamicYear();
-
+  
+  document.getElementById('year').textContent = new Date().getFullYear();
+  
   console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
