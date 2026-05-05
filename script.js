@@ -540,7 +540,51 @@ function initDynamicFavicon() {
   link.href = canvas.toDataURL("image/x-icon");
   document.head.appendChild(link);
 }
+// script.js ke END me, initDynamicYear() ke baad add karo:
 
+// ============================================
+// 14. KONAMI CODE EASTER EGG
+// ============================================
+function initKonamiCode() {
+  const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  let currentIndex = 0;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === konamiSequence[currentIndex]) {
+      currentIndex++;
+      if (currentIndex === konamiSequence.length) {
+        activateEasterEgg();
+        currentIndex = 0;
+      }
+    } else {
+      currentIndex = 0;
+    }
+  });
+
+  function activateEasterEgg() {
+    // Fun console message
+    console.log('%c🎉 KONAMI CODE ACTIVATED! 🎉', 'color: #38bdf8; font-size: 24px; font-weight: bold;');
+    console.log('%cHey there, curious developer! 👋', 'color: #94a3b8; font-size: 14px;');
+    console.log('%cThanks for checking out my portfolio!', 'color: #16a34a; font-size: 14px;');
+    
+    // Visual feedback - confetti effect (CSS animation)
+    const confetti = document.createElement('div');
+    confetti.innerHTML = '🎊';
+    confetti.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      z-index: 10000;
+      animation: confettiPop 1s ease forwards;
+      pointer-events: none;
+    `;
+    document.body.appendChild(confetti);
+    
+    setTimeout(() => confetti.remove(), 1500);
+  }
+}
 // ============================================
 // INIT — Run everything on DOM load
 // ============================================
