@@ -508,6 +508,40 @@ function injectStyles() {
 }
 
 // ============================================
+// 13. DYNAMIC FAVICON BASED ON TIME
+// ============================================
+function initDynamicFavicon() {
+  const hour = new Date().getHours();
+  const isDay = hour >= 6 && hour < 18;
+  
+  // Create canvas favicon
+  const canvas = document.createElement('canvas');
+  canvas.width = 32;
+  canvas.height = 32;
+  const ctx = canvas.getContext('2d');
+  
+  // Background circle
+  ctx.beginPath();
+  ctx.arc(16, 16, 14, 0, 2 * Math.PI);
+  ctx.fillStyle = isDay ? '#38bdf8' : '#1e293b';
+  ctx.fill();
+  
+  // "D" text
+  ctx.fillStyle = isDay ? '#020617' : '#38bdf8';
+  ctx.font = 'bold 18px Poppins';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText('D', 16, 16);
+  
+  // Update favicon
+  const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
+  link.type = 'image/x-icon';
+  link.rel = 'shortcut icon';
+  link.href = canvas.toDataURL("image/x-icon");
+  document.head.appendChild(link);
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
@@ -523,8 +557,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initCopyEmail();
   initDynamicYear();
-  
-  document.getElementById('year').textContent = new Date().getFullYear();
+  initDynamicFavicon(); // NEW  document.getElementById('year').textContent = new Date().getFullYear()
   
   console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
