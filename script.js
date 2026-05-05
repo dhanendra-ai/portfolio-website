@@ -558,6 +558,5 @@ window.addEventListener("DOMContentLoaded", () => {
   initCopyEmail();
   initDynamicYear();
   initDynamicFavicon(); // NEW  document.getElementById('year').textContent = new Date().getFullYear()
-  
-  console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
+  initKonamiCode(); // NEW  console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
