@@ -605,6 +605,39 @@ function initHeroGreeting() {
 }
 
 // ============================================
+// 16. CLICK TO COPY SKILL BADGE
+// ============================================
+function initSkillCopy() {
+  const badges = document.querySelectorAll('.skill-badge');
+  
+  badges.forEach((badge) => {
+    // Pointer cursor dikhane ke liye (agar CSS mein nahi hai)
+    badge.style.cursor = 'pointer';
+
+    badge.addEventListener('click', () => {
+      const text = badge.textContent.trim();
+      
+      // Clipboard pe copy karein
+      navigator.clipboard.writeText(text).then(() => {
+        // Visual feedback: thoda bada hona (scale)
+        badge.style.transition = 'transform 0.2s ease';
+        badge.style.transform = 'scale(1.1)';
+        
+        // Background color temporary change karna (Optional but cool)
+        const originalBg = badge.style.backgroundColor;
+        badge.style.backgroundColor = 'var(--primary)';
+        
+        setTimeout(() => {
+          badge.style.transform = '';
+          badge.style.backgroundColor = originalBg;
+        }, 300);
+      });
+    });
+  });
+}
+
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
@@ -623,4 +656,5 @@ window.addEventListener("DOMContentLoaded", () => {
   initDynamicFavicon(); // NEW  document.getElementById('year').textContent = new Date().getFullYear()
   initKonamiCode(); // NEW  console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
   initHeroGreeting();
+  initSkillCopy();
 });
