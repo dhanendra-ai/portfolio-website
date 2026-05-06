@@ -585,6 +585,25 @@ function initKonamiCode() {
     setTimeout(() => confetti.remove(), 1500);
   }
 }
+
+// ============================================
+// 15. RANDOM HERO GREETING
+// ============================================
+function initHeroGreeting() {
+  const greetingEl = document.querySelector('.hero-greeting');
+  if (!greetingEl) return;
+
+  const greetings = [
+    "👋 Hello, World!", 
+    "🚀 Welcome, Coder!", 
+    "💻 Happy Coding!", 
+    "✨ Hey there!"
+  ];
+  
+  const randomIndex = Math.floor(Math.random() * greetings.length);
+  greetingEl.textContent = greetings[randomIndex];
+}
+
 // ============================================
 // INIT — Run everything on DOM load
 // ============================================
@@ -603,4 +622,5 @@ window.addEventListener("DOMContentLoaded", () => {
   initDynamicYear();
   initDynamicFavicon(); // NEW  document.getElementById('year').textContent = new Date().getFullYear()
   initKonamiCode(); // NEW  console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
+  initHeroGreeting();
 });
