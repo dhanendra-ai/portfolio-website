@@ -636,6 +636,18 @@ function initSkillCopy() {
   });
 }
 
+// ============================================
+// 17. SCROLL PROGRESS BAR
+// ============================================
+function initScrollProgress() {
+  const progressBar = document.getElementById('scroll-progress');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrolled + '%';
+  });
+}
 
 // ============================================
 // INIT — Run everything on DOM load
@@ -653,8 +665,9 @@ window.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initCopyEmail();
   initDynamicYear();
-  initDynamicFavicon(); // NEW  document.getElementById('year').textContent = new Date().getFullYear()
-  initKonamiCode(); // NEW  console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
+  initDynamicFavicon(); 
+  initKonamiCode(); 
   initHeroGreeting();
   initSkillCopy();
+  initScrollProgress();
 });
