@@ -35,6 +35,17 @@ body {
   overflow-x: hidden;
 }
 
+/* Scroll Progress Bar */
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 3px;
+  background: var(--primary);
+  z-index: 10000;
+  transition: width 0.1s;
+}
+
 /* ============================================
    ACCESSIBILITY — Focus & Reduced Motion
    ============================================ */
