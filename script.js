@@ -650,6 +650,25 @@ function initScrollProgress() {
 }
 
 // ============================================
+// 18. DOUBLE CLICK TO LIKE PROJECT
+// ============================================
+function initProjectLike() {
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('dblclick', (e) => {
+      const heart = document.createElement('div');
+      heart.textContent = '❤️';
+      // Set position based on click coordinates
+      heart.style.cssText = `position:absolute; left:${e.offsetX}px; top:${e.offsetY}px; font-size:24px; animation:floatUp 1s ease forwards; pointer-events:none; z-index:100;`;
+      card.appendChild(heart);
+      
+      // Remove heart after animation finishes (1 second)
+      setTimeout(() => heart.remove(), 1000);
+    });
+  });
+}
+
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
