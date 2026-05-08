@@ -1054,3 +1054,18 @@ body.light-mode .hamburger span {
   50% { transform: translate(-50%, -50%) scale(1.5) rotate(180deg); opacity: 1; }
   100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); opacity: 0; }
 }
+
+
+/* ============================================
+   DOUBLE CLICK HEART ANIMATION
+   ============================================ */
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
+}
+
+/* Ensure hearts stay inside the card properly */
+.project-card {
+  position: relative;
+  overflow: hidden; 
+}
