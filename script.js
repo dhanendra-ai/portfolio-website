@@ -689,4 +689,5 @@ window.addEventListener("DOMContentLoaded", () => {
   initHeroGreeting();
   initSkillCopy();
   initScrollProgress();
+  initProjectLike();
 });
