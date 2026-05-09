@@ -667,6 +667,31 @@ function initProjectLike() {
   });
 }
 
+// ============================================
+// 19. TAB VISIBILITY TITLE (COME BACK EFFECT)
+// ============================================
+function initTabTitleChanger() {
+  const originalTitle = "Dhanendra Sahu | AI Developer Portfolio";
+  const awayTitles = ["Come back! 👋", "Dhanendra Sahu"];
+  let titleIndex = 0;
+  let interval;
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      // Jab user dusre tab par jaye, toh interval start karo
+      interval = setInterval(() => {
+        document.title = awayTitles[titleIndex];
+        titleIndex = (titleIndex + 1) % awayTitles.length;
+      }, 2000); // Har 2 second me title change hoga
+    } else {
+      // Jab user wapas aaye, toh animation rok do aur original title laga do
+      clearInterval(interval);
+      document.title = originalTitle;
+      titleIndex = 0;
+    }
+  });
+}
+
 
 // ============================================
 // INIT — Run everything on DOM load
