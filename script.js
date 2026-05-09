@@ -715,6 +715,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initSkillCopy();
   initScrollProgress();
   initProjectLike();
+  initTabTitleChanger();
 
   
   document.getElementById('year').textContent = new Date().getFullYear();
