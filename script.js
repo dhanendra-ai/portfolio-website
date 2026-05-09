@@ -690,4 +690,9 @@ window.addEventListener("DOMContentLoaded", () => {
   initSkillCopy();
   initScrollProgress();
   initProjectLike();
+
+  
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");  
 });
