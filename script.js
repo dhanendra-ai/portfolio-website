@@ -692,6 +692,21 @@ function initTabTitleChanger() {
   });
 }
 
+// ============================================
+// 20. MOUSE SPOTLIGHT EFFECT
+// ============================================
+function initSpotlight() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return; 
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    hero.style.setProperty('--mouse-x', `${x}px`);
+    hero.style.setProperty('--mouse-y', `${y}px`);
+  });
+}
 
 // ============================================
 // INIT — Run everything on DOM load
@@ -716,6 +731,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   initProjectLike();
   initTabTitleChanger();
+  
 
   
   document.getElementById('year').textContent = new Date().getFullYear();
