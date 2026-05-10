@@ -731,6 +731,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initScrollProgress();
   initProjectLike();
   initTabTitleChanger();
+  initSpotlight();
   
 
   
