@@ -709,6 +709,42 @@ function initSpotlight() {
 }
 
 // ============================================
+// 21. 3D TILT CARDS
+// ============================================
+function init3DTilt() {
+  const cards = document.querySelectorAll('.card, .blog-card');
+  
+  cards.forEach(card => {
+    card.classList.add('card-3d');
+    
+    // Add shine element
+    const shine = document.createElement('div');
+    shine.className = 'card-shine';
+    card.appendChild(shine);
+    
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      
+      // Move shine
+      shine.style.background = `linear-gradient(${135 + rotateY * 2}deg, rgba(255,255,255,${0.1 + Math.abs(rotateY)/100}) 0%, transparent 60%)`;
+    });
+    
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
@@ -732,6 +768,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initProjectLike();
   initTabTitleChanger();
   initSpotlight();
+  init3DTilt();
   
 
   
