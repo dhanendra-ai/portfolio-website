@@ -1090,5 +1090,26 @@ body.light-mode .hamburger span {
 
 @media (prefers-reduced-motion: reduce) {
   .hero::before { display: none; }
+
+
+/* ============================================
+   3D TILT CARDS
+   ============================================ */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
 }
 
+.card-3d .card-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.card-3d:hover .card-shine {
+  opacity: 1;
+}
