@@ -1114,9 +1114,4 @@ body.light-mode .hamburger span {
   opacity: 1;
 }
 
-/* ============================================
-   MAGNETIC BUTTONS
-   ============================================ */
-.btn-magnetic {
-  transition: transform 0.2s ease-out;
-}
+
