@@ -1113,3 +1113,10 @@ body.light-mode .hamburger span {
 .card-3d:hover .card-shine {
   opacity: 1;
 }
+
+/* ============================================
+   MAGNETIC BUTTONS
+   ============================================ */
+.btn-magnetic {
+  transition: transform 0.2s ease-out;
+}
