@@ -1119,4 +1119,21 @@ body.light-mode .hamburger span {
 .btn-magnetic {
   transition: transform 0.2s ease-out;
 }
+/* ============================================
+   SMOOTH SECTION SNAP
+   ============================================ */
+html {
+  scroll-behavior: smooth;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+  
+  section {
+    scroll-snap-align: start;
+  }
+}
+   
 
