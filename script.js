@@ -769,6 +769,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initTabTitleChanger();
   initSpotlight();
   init3DTilt();
+  initMagneticButtons(); 
   
 
   
