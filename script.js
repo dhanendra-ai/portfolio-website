@@ -745,6 +745,24 @@ function init3DTilt() {
 }
 
 // ============================================
+// 23. LIVE CLOCK IN FOOTER
+// ============================================
+function initLiveClock() {
+  const footer = document.querySelector('footer');
+  if (!footer) return;
+
+  const clock = document.createElement('p');
+  clock.id = 'live-clock';
+  clock.style.cssText = 'font-size:0.75rem; color:#475569; margin-top:8px; font-family:monospace;';
+  footer.appendChild(clock);
+
+  setInterval(() => {
+    const now = new Date();
+    clock.textContent = `🕒 ${now.toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata'})} IST`;
+  }, 1000);
+} 
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
