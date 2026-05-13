@@ -788,7 +788,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initSpotlight();
   init3DTilt();
   initMagneticButtons(); 
-  
+  initLiveClock();
 
   
   document.getElementById('year').textContent = new Date().getFullYear();
