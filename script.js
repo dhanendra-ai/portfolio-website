@@ -763,6 +763,22 @@ function initLiveClock() {
 } 
 
 // ============================================
+// 24. RANDOM QUOTE IN CONSOLE
+// ============================================
+function initRandomQuote() {
+  const quotes = [
+    "Code is like humor. When you have to explain it, it's bad.",
+    "First, solve the problem. Then, write the code.",
+    "Java is to JavaScript what car is to Carpet.",
+    "Talk is cheap. Show me the code."
+  ];
+  
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  console.log('%c💡 ' + randomQuote, 'color: #38bdf8; font-style: italic; font-size: 14px; padding: 5px;');
+}
+
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
@@ -789,7 +805,7 @@ window.addEventListener("DOMContentLoaded", () => {
   init3DTilt();
   initMagneticButtons(); 
   initLiveClock();
-
+  initRandomQuote();
   
   document.getElementById('year').textContent = new Date().getFullYear();
 
