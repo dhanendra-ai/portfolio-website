@@ -1135,5 +1135,21 @@ html {
     scroll-snap-align: start;
   }
 }
+
+/* ============================================
+   CLICK RIPPLE EFFECT ON BUTTONS
+   ============================================ */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: scale(0);
+  animation: rippleAnim 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
    
 
