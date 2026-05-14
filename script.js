@@ -826,6 +826,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initMagneticButtons(); 
   initLiveClock();
   initRandomQuote();
+  initRippleEffect();
   
   document.getElementById('year').textContent = new Date().getFullYear();
 
