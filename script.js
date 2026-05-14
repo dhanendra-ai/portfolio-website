@@ -776,7 +776,27 @@ function initRandomQuote() {
   const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   console.log('%c💡 ' + randomQuote, 'color: #38bdf8; font-style: italic; font-size: 14px; padding: 5px;');
 }
-
+// ============================================
+// 25. RANDOM QUOTE IN CONSOLE
+// ============================================
+// script.js me:
+function initRipple() {
+  document.querySelectorAll('.btn, .card').forEach(el => {
+    el.style.position = 'relative';
+    el.style.overflow = 'hidden';
+    el.addEventListener('click', (e) => {
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const rect = el.getBoundingClientRect();
+      ripple.style.left = (e.clientX - rect.left) + 'px';
+      ripple.style.top = (e.clientY - rect.top) + 'px';
+      ripple.style.width = ripple.style.height = '20px';
+      el.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+}
+// Call: initRipple(); 
 
 // ============================================
 // INIT — Run everything on DOM load
