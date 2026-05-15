@@ -799,6 +799,23 @@ function initRipple() {
 // Call: initRipple(); 
 
 // ============================================
+// 26. KEYBOARD SHORTCUT (Press '/' to Contact)
+// ============================================
+function initKeyboardShortcut() {
+  document.addEventListener('keydown', (e) => {
+    // Agar user '/' dabaye, aur kisi input ya textarea mein type na kar raha ho
+    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault(); // Default search behavior rokna
+      
+      const contactLink = document.querySelector('nav a[href="#contact"]');
+      if (contactLink) {
+        contactLink.click(); // Contact link par click simulate karna
+      }
+    }
+  });
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
