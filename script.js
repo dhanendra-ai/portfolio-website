@@ -844,6 +844,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initLiveClock();
   initRandomQuote();
   initRippleEffect();
+  initKeyboardShortcut();
   
   document.getElementById('year').textContent = new Date().getFullYear();
 
