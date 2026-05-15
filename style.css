@@ -1151,5 +1151,17 @@ html {
 @keyframes rippleAnim {
   to { transform: scale(4); opacity: 0; }
 }
+
+/* ============================================
+   PAGE LOAD ANIMATION (SMOOTH FADE IN)
+   ============================================ */
+body {
+  opacity: 0;
+  animation: fadeInBody 0.8s ease forwards;
+}
+
+@keyframes fadeInBody {
+  to { opacity: 1; }
+}
    
 
