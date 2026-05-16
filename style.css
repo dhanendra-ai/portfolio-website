@@ -1164,4 +1164,10 @@ body {
   to { opacity: 1; }
 }
    
-
+/* ============================================
+   HOVER GLOW ON SKILL BADGES
+   ============================================ */
+.skill-badge {
+  position: relative;
+  overflow: hidden;
+}
