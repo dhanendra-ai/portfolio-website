@@ -1171,3 +1171,18 @@ body {
   position: relative;
   overflow: hidden;
 }
+.skill-badge::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 25px;
+  filter: blur(8px);
+}
+
+.skill-badge:hover::after {
+  opacity: 0.5;
+}
