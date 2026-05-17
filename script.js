@@ -854,6 +854,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initRandomQuote();
   initRippleEffect();
   initKeyboardShortcut();
+  initCustomContextMenu();
   
   setTimeout(() => {
     initTextScramble();
