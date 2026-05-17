@@ -831,22 +831,20 @@ window.addEventListener("DOMContentLoaded", () => {
   initThemeToggle();
   initCopyEmail();
   initDynamicYear();
-  initDynamicFavicon(); 
-  initKonamiCode(); 
-  initHeroGreeting();
-  initSkillCopy();
   initScrollProgress();
   initProjectLike();
   initTabTitleChanger();
   initSpotlight();
   init3DTilt();
-  initMagneticButtons(); 
+  initMagneticButtons();
   initLiveClock();
   initRandomQuote();
   initRippleEffect();
   initKeyboardShortcut();
   
-  document.getElementById('year').textContent = new Date().getFullYear();
+  setTimeout(() => {
+    initTextScramble();
+  }, 1000); // 1000 means 1 second delay
 
-  console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");  
+  console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
