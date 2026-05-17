@@ -816,6 +816,19 @@ function initKeyboardShortcut() {
 }
 
 // ============================================
+// 28. CUSTOM RIGHT-CLICK MENU (HERO SECTION)
+// ============================================
+function initCustomContextMenu() {
+  document.addEventListener('contextmenu', (e) => {
+    // Check agar user ne Hero section ke andar right-click kiya hai
+    if(e.target.closest('.hero')) {
+      e.preventDefault(); // Normal right-click menu ko rokna
+      alert('👋 Hey! Try the Konami Code: ↑↑↓↓←→←→BA');
+    }
+  });
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
