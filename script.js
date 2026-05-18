@@ -829,6 +829,33 @@ function initCustomContextMenu() {
 }
 
 // ============================================
+// 29. SMOOTH NUMBER COUNTER (STATS)
+// ============================================
+function initCounters() {
+  const counters = document.querySelectorAll('.counter');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        const target = +entry.target.dataset.target;
+        let current = 0;
+        const inc = target / 50;
+        const timer = setInterval(() => {
+          current += inc;
+          if(current >= target) {
+            entry.target.textContent = target;
+            clearInterval(timer);
+          } else {
+            entry.target.textContent = Math.ceil(current);
+          }
+        }, 30);
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  counters.forEach(c => observer.observe(c));
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
