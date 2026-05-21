@@ -908,6 +908,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initKeyboardShortcut();
   initCustomContextMenu();
   initCounters();
+  initCursorTrail();
   
   setTimeout(() => {
     initTextScramble();
