@@ -856,6 +856,31 @@ function initCounters() {
 }
 
 // ============================================
+// 30. CURSOR TRAIL (PARTICLES EFFECT)
+// ============================================
+function initCursorTrail() {
+  const colors = ['#38bdf8', '#2563eb', '#60a5fa']; // Blue shades
+  document.addEventListener('mousemove', (e) => {
+    const dot = document.createElement('div');
+    dot.style.cssText = `
+      position:fixed; width:6px; height:6px; border-radius:50%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${e.clientX}px; top:${e.clientY}px; pointer-events:none;
+      z-index:9997; opacity:0.8;
+    `;
+    document.body.appendChild(dot);
+    
+    setTimeout(() => {
+      dot.style.transition = 'all 0.8s ease';
+      dot.style.transform = 'scale(0) translateY(20px)';
+      dot.style.opacity = '0';
+    }, 10);
+    
+    setTimeout(() => dot.remove(), 800);
+  });
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
