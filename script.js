@@ -924,6 +924,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initCustomContextMenu();
   initCounters();
   initCursorTrail();
+  initDoubleTapTop();
   
   setTimeout(() => {
     initTextScramble();
