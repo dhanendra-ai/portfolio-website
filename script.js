@@ -881,6 +881,21 @@ function initCursorTrail() {
 }
 
 // ============================================
+// 31. DOUBLE TAP TO TOP (MOBILE)
+// ============================================
+function initDoubleTapTop() {
+  let lastTap = 0;
+  document.addEventListener('touchend', (e) => {
+    const currentTime = new Date().getTime();
+    // Agar 300ms ke andar do baar tap hua navigation bar pe
+    if (currentTime - lastTap < 300 && e.target.closest('nav')) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    lastTap = currentTime;
+  });
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
