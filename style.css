@@ -1193,3 +1193,15 @@ body {
 body, body * {
   transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
+
+/* ============================================
+   BREATHING ANIMATION ON LOGO
+   ============================================ */
+.logo {
+  animation: breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
