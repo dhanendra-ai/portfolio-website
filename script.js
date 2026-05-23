@@ -896,6 +896,25 @@ function initDoubleTapTop() {
 }
 
 // ============================================
+// 32. RANDOM BACKGROUND GRADIENT SHIFT
+// ============================================
+function initGradientShift() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return; // Error se bachne ke liye check
+
+  const gradients = [
+    'radial-gradient(ellipse at center, #0f1f3d 0%, #020617 70%)',
+    'radial-gradient(ellipse at center, #1a103c 0%, #020617 70%)',
+    'radial-gradient(ellipse at center, #0d2b1e 0%, #020617 70%)'
+  ];
+  
+  // Har 10 second (10000ms) mein background change hoga
+  setInterval(() => {
+    hero.style.background = gradients[Math.floor(Math.random() * gradients.length)];
+  }, 10000);
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
