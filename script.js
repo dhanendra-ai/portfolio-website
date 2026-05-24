@@ -915,6 +915,22 @@ function initGradientShift() {
 }
 
 // ============================================
+// 33. PARALLAX SCROLL EFFECT
+// ============================================
+function initParallax() {
+  document.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    
+    // Hero background ke shapes (spans) ko select karna
+    document.querySelectorAll('.hero-bg span').forEach((span, i) => {
+      // Har shape ki speed thodi alag hogi (3D feel ke liye)
+      const speed = 0.5 + (i * 0.1);
+      span.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+    });
+  });
+}
+
+// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
