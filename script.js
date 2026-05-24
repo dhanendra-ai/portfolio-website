@@ -961,6 +961,7 @@ window.addEventListener("DOMContentLoaded", () => {
   initCursorTrail();
   initDoubleTapTop();
   initGradientShift();
+  initParallax();
   
   setTimeout(() => {
     initTextScramble();
