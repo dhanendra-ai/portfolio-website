@@ -1224,4 +1224,9 @@ body, body * {
   animation: blink 0.8s infinite, typeSound 0.1s ease;
 }
 
+@keyframes typeSound {
+  0% { transform: scaleY(1.2); }
+  100% { transform: scaleY(1); }
+}
+
 
