@@ -9,6 +9,7 @@
   <meta name="description" content="Portfolio of Dhanendra Sahu — B.Tech CSE (AI) student, Java & Spring Boot developer, AI/ML enthusiast building real-world automation systems.">
   <meta name="keywords" content="Dhanendra Sahu, Java Developer, Spring Boot, AI, n8n, Portfolio, Backend Developer, Automation">
   <meta name="author" content="Dhanendra Sahu">
+  <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://dhanendra-ai.github.io">
 
   <!-- Open Graph -->
@@ -17,6 +18,8 @@
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://dhanendra-ai.github.io">
   <meta property="og:image" content="https://dhanendra-ai.github.io/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
@@ -24,24 +27,22 @@
   <meta name="twitter:description" content="B.Tech CSE (AI) student building smart, scalable backend systems with Java, Spring Boot, and n8n.">
   <meta name="twitter:image" content="https://dhanendra-ai.github.io/og-image.jpg">
 
-<!-- Fonts & Icons -->
-    <!-- ✅ FAST LOADING: Google Fonts ko pehle connect karo -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-
-    <!-- ✅ FAST LOADING: Main design file ko preload karo -->
-    <link rel="preload" href="style.css" as="style">
-    
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+<base target="_blank">
 </head>
 <body>
 
   <!-- Custom Cursor -->
   <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
   <div class="cursor-outline" id="cursor-outline" aria-hidden="true"></div>
-  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
   <!-- Back to Top Button -->
   <button id="back-to-top" title="Back to Top" aria-label="Back to top">
@@ -130,14 +131,15 @@
           <span class="skill-badge"><i class="fas fa-robot" aria-hidden="true"></i> n8n</span>
           <span class="skill-badge"><i class="fab fa-python" aria-hidden="true"></i> Python</span>
           <span class="skill-badge"><i class="fas fa-brain" aria-hidden="true"></i> AI/ML</span>
-       </div> <div class="stats-counter" style="display: flex; gap: 20px; font-weight: bold; margin-top: 25px; flex-wrap: wrap;">
-        <div><span class="counter" data-target="10">0</span>+ Projects</div>
-        <div><span class="counter" data-target="500">0</span>+ Commits</div>
-        <div><span class="counter" data-target="1000">0</span>+ Lines</div>
+        </div>
+        <div class="stats-counter">
+          <div><span class="counter" data-target="10">0</span>+ Projects</div>
+          <div><span class="counter" data-target="500">0</span>+ Commits</div>
+          <div><span class="counter" data-target="1000">0</span>+ Lines</div>
+        </div>
       </div>
-    </div> 
-  </div> 
-</section>
+    </div>
+  </section>
 
   <!-- Education / Journey Timeline -->
   <section id="education">
@@ -295,7 +297,7 @@
           src="https://github-readme-stats.vercel.app/api?username=dhanendra-ai&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=38bdf8&icon_color=38bdf8&text_color=94a3b8"
           alt="GitHub Stats"
           loading="lazy"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class=\'github-fallback\'>Stats unavailable</p>'"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class='github-fallback'>Stats unavailable</p>'"
         />
       </div>
 
@@ -304,7 +306,7 @@
           src="https://github-readme-stats.vercel.app/api/top-langs/?username=dhanendra-ai&layout=compact&theme=tokyonight&hide_border=true&bg_color=0d1117&title_color=38bdf8&text_color=94a3b8"
           alt="Top Languages"
           loading="lazy"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class=\'github-fallback\'>Stats unavailable</p>'"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class='github-fallback'>Stats unavailable</p>'"
         />
       </div>
 
@@ -313,7 +315,7 @@
           src="https://github-readme-streak-stats.herokuapp.com/?user=dhanendra-ai&theme=tokyonight&hide_border=true&background=0d1117&ring=38bdf8&fire=38bdf8&currStreakLabel=38bdf8"
           alt="GitHub Streak"
           loading="lazy"
-          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class=\'github-fallback\'>Stats unavailable</p>'"
+          onerror="this.style.display='none'; this.parentElement.innerHTML='<p class='github-fallback'>Stats unavailable</p>'"
         />
       </div>
 
@@ -375,6 +377,7 @@
   <footer>
     <p>© <span id="year"></span> <strong>Dhanendra Sahu</strong> | Built with ❤️ & Passion</p>
     <p style="font-size:0.8rem; color:#475569; margin-top:5px;">Always learning. Always building.</p>
+    <p id="live-clock" style="font-size:0.75rem; color:#475569; margin-top:8px; font-family:monospace;"></p>
   </footer>
 
   <script src="script.js"></script>
