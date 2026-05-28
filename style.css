@@ -35,15 +35,19 @@ body {
   overflow-x: hidden;
 }
 
-/* Scroll Progress Bar */
+/* ============================================
+   SCROLL PROGRESS BAR
+   ============================================ */
 .scroll-progress {
   position: fixed;
   top: 0;
   left: 0;
   height: 3px;
-  background: var(--primary);
-  z-index: 10000;
-  transition: width 0.1s;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  z-index: 10001;
+  width: 0%;
+  transition: width 0.1s ease-out;
+  box-shadow: 0 0 10px rgba(var(--primary-rgb), 0.5);
 }
 
 /* ============================================
@@ -66,6 +70,7 @@ button:focus-visible {
   .cursor-dot, .cursor-outline { display: none !important; }
   body { cursor: auto; }
   .hero-bg span { animation: none; }
+  .hero::before { display: none; }
 }
 
 /* ============================================
@@ -125,8 +130,15 @@ nav {
   letter-spacing: 1px;
   text-decoration: none;
   color: white;
+  animation: breathe 3s ease-in-out infinite;
 }
+
 .logo span { color: var(--primary); }
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
 
 .nav-right {
   display: flex;
@@ -140,7 +152,7 @@ nav {
   gap: 30px;
 }
 
-desktop-nav a {
+.desktop-nav a {
   color: var(--text-muted);
   text-decoration: none;
   font-size: 0.95rem;
@@ -150,7 +162,7 @@ desktop-nav a {
   position: relative;
 }
 
-desktop-nav a::after {
+.desktop-nav a::after {
   content: '';
   position: absolute;
   bottom: -4px;
@@ -161,14 +173,13 @@ desktop-nav a::after {
   transition: width 0.3s;
 }
 
-desktop-nav a:hover { color: var(--primary); }
-desktop-nav a:hover::after { width: 100%; }
+.desktop-nav a:hover { color: var(--primary); }
+.desktop-nav a:hover::after { width: 100%; }
 
-/* Active nav link */
-desktop-nav a.active {
+.desktop-nav a.active {
   color: var(--primary);
 }
-desktop-nav a.active::after {
+.desktop-nav a.active::after {
   width: 100%;
 }
 
@@ -184,6 +195,21 @@ desktop-nav a.active::after {
   position: relative;
   overflow: hidden;
   background: radial-gradient(ellipse at center, #0f1f3d 0%, var(--bg-dark) 70%);
+}
+
+/* Mouse Spotlight Effect */
+.hero::before {
+  content: '';
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.15) 0%, transparent 70%);
+  pointer-events: none;
+  left: var(--mouse-x, 50%);
+  top: var(--mouse-y, 50%);
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  transition: left 0.1s ease-out, top 0.1s ease-out;
 }
 
 .hero-bg {
@@ -306,6 +332,25 @@ desktop-nav a.active::after {
   transform: none;
 }
 
+/* Magnetic Button */
+.btn-magnetic {
+  transition: transform 0.2s ease-out;
+}
+
+/* Click Ripple */
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.3);
+  transform: scale(0);
+  animation: rippleAnim 0.6s linear;
+  pointer-events: none;
+}
+
+@keyframes rippleAnim {
+  to { transform: scale(4); opacity: 0; }
+}
+
 /* ============================================
    SECTION COMMON
    ============================================ */
@@ -362,11 +407,52 @@ section { padding: 80px 10%; }
   align-items: center;
   gap: 6px;
   transition: all 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
 }
 
 .skill-badge:hover {
   background: rgba(var(--primary-rgb), 0.15);
   transform: translateY(-2px);
+}
+
+/* Hover Glow on Skill Badges */
+.skill-badge::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  border-radius: 25px;
+  filter: blur(8px);
+}
+
+.skill-badge:hover::after {
+  opacity: 0.5;
+}
+
+/* Stats Counter */
+.stats-counter {
+  display: flex;
+  gap: 20px;
+  font-weight: bold;
+  margin-top: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.stats-counter div {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.stats-counter .counter {
+  color: var(--primary);
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 /* ============================================
@@ -379,6 +465,8 @@ section { padding: 80px 10%; }
   border: 1px solid var(--border);
   transition: all 0.4s ease;
   backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
 }
 
 .card:hover {
@@ -386,6 +474,26 @@ section { padding: 80px 10%; }
   background: rgba(30, 41, 59, 0.9);
   transform: translateY(-6px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* 3D Tilt Cards */
+.card-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.1s ease-out;
+}
+
+.card-3d .card-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+.card-3d:hover .card-shine {
+  opacity: 1;
 }
 
 /* ============================================
@@ -432,6 +540,7 @@ section { padding: 80px 10%; }
   box-shadow: 0 0 20px rgba(var(--primary-rgb), 0.5);
   z-index: 2;
   transition: transform 0.3s;
+  cursor: pointer;
 }
 
 .timeline-item:hover .timeline-dot {
@@ -450,6 +559,11 @@ section { padding: 80px 10%; }
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 25px;
+}
+
+.project-card {
+  position: relative;
+  overflow: hidden;
 }
 
 .card-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; }
@@ -497,9 +611,10 @@ section { padding: 80px 10%; }
   border-radius: 10px;
 }
 
-/* Project card smooth transition */
-.project-card {
-  transition: opacity 0.3s ease, transform 0.3s ease;
+/* Double click heart animation */
+@keyframes floatUp {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
 }
 
 /* ============================================
@@ -1021,6 +1136,39 @@ body.light-mode .hamburger span {
 }
 
 /* ============================================
+   KONAMI CODE CONFETTI
+   ============================================ */
+@keyframes confettiPop {
+  0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: translate(-50%, -50%) scale(1.5) rotate(180deg); opacity: 1; }
+  100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); opacity: 0; }
+}
+
+/* ============================================
+   TYPING CURSOR
+   ============================================ */
+.cursor-blink {
+  color: #38bdf8;
+  font-weight: bold;
+  margin-left: 2px;
+  animation: blink 0.8s infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+/* ============================================
+   SHAKE ANIMATION (Form Error)
+   ============================================ */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* ============================================
    RESPONSIVE
    ============================================ */
 @media (max-width: 768px) {
@@ -1049,184 +1197,3 @@ body.light-mode .hamburger span {
   .hero-btns { flex-direction: column; align-items: center; }
   .btn { width: 100%; max-width: 280px; justify-content: center; }
 }
-@keyframes confettiPop {
-  0% { transform: translate(-50%, -50%) scale(0) rotate(0deg); opacity: 0; }
-  50% { transform: translate(-50%, -50%) scale(1.5) rotate(180deg); opacity: 1; }
-  100% { transform: translate(-50%, -50%) scale(1) rotate(360deg); opacity: 0; }
-}
-
-
-/* ============================================
-   DOUBLE CLICK HEART ANIMATION
-   ============================================ */
-@keyframes floatUp {
-  0% { transform: translateY(0) scale(1); opacity: 1; }
-  100% { transform: translateY(-50px) scale(1.5); opacity: 0; }
-}
-
-/* Ensure hearts stay inside the card properly */
-.project-card {
-  position: relative;
-  overflow: hidden; 
-}
-
-
-/* ============================================
-   MOUSE SPOTLIGHT EFFECT
-   ============================================ */
-.hero::before {
-  content: '';
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(var(--primary-rgb), 0.15) 0%, transparent 70%);
-  pointer-events: none;
-  left: var(--mouse-x, 50%);
-  top: var(--mouse-y, 50%);
-  transform: translate(-50%, -50%);
-  z-index: 1;
-  transition: left 0.1s ease-out, top 0.1s ease-out;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero::before { display: none; }
-
-
-/* ============================================
-   3D TILT CARDS
-   ============================================ */
-.card-3d {
-  transform-style: preserve-3d;
-  transition: transform 0.1s ease-out;
-}
-
-.card-3d .card-shine {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.3s;
-  pointer-events: none;
-  border-radius: 20px;
-}
-
-.card-3d:hover .card-shine {
-  opacity: 1;
-}
-/* ============================================
-   MAGNETIC BUTTONS
-   ============================================ */
-.btn-magnetic {
-  transition: transform 0.2s ease-out;
-}
-/* ============================================
-   SMOOTH SECTION SNAP
-   ============================================ */
-html {
-  scroll-behavior: smooth;
-}
-
-@media (min-width: 768px) {
-  html {
-    scroll-snap-type: y proximity;
-  }
-  
-  section {
-    scroll-snap-align: start;
-  }
-}
-
-/* ============================================
-   CLICK RIPPLE EFFECT ON BUTTONS
-   ============================================ */
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.3);
-  transform: scale(0);
-  animation: rippleAnim 0.6s linear;
-  pointer-events: none;
-}
-
-@keyframes rippleAnim {
-  to { transform: scale(4); opacity: 0; }
-}
-
-/* ============================================
-   PAGE LOAD ANIMATION (SMOOTH FADE IN)
-   ============================================ */
-body {
-  opacity: 0;
-  animation: fadeInBody 0.8s ease forwards;
-}
-
-@keyframes fadeInBody {
-  to { opacity: 1; }
-}
-   
-/* ============================================
-   HOVER GLOW ON SKILL BADGES
-   ============================================ */
-.skill-badge {
-  position: relative;
-  overflow: hidden;
-}
-.skill-badge::after {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(45deg, var(--primary), transparent, var(--primary));
-  z-index: -1;
-  opacity: 0;
-  transition: opacity 0.3s;
-  border-radius: 25px;
-  filter: blur(8px);
-}
-
-.skill-badge:hover::after {
-  opacity: 0.5;
-}
-   
-/* ============================================
-   DARK MODE TOGGLE ANIMATION (SMOOTH TRANSITION)
-   ============================================ */
-body, body * {
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
-}
-
-/* ============================================
-   BREATHING ANIMATION ON LOGO
-   ============================================ */
-.logo {
-  animation: breathe 3s ease-in-out infinite;
-}
-
-@keyframes breathe {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-/* ============================================
-   TYPING SOUND EFFECT (VISUAL CURSOR)
-   ============================================ */
-.cursor-blink {
-  position: relative;
-}
-
-.cursor-blink::after {
-  content: '';
-  position: absolute;
-  right: -4px;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: var(--primary);
-  animation: blink 0.8s infinite, typeSound 0.1s ease;
-}
-
-@keyframes typeSound {
-  0% { transform: scaleY(1.2); }
-  100% { transform: scaleY(1); }
-}
-
-
