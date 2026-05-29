@@ -13,6 +13,22 @@
  *   - Hamburger Menu
  *   - Copy Email to Clipboard
  *   - Dynamic Year
+ *   - Scroll Progress Bar
+ *   - Double Click to Like Project
+ *   - Tab Title Changer
+ *   - Mouse Spotlight Effect
+ *   - 3D Tilt Cards
+ *   - Live Clock in Footer
+ *   - Random Quote in Console
+ *   - Click Ripple Effect
+ *   - Keyboard Shortcut (/ to Contact)
+ *   - Custom Right-Click Menu
+ *   - Animated Stats Counter
+ *   - Cursor Trail Effect
+ *   - Double Tap to Top (Mobile)
+ *   - Random Background Gradient Shift
+ *   - Parallax Scroll Effect
+ *   - Konami Code Easter Egg
  * ============================================
  */
 
@@ -195,16 +211,13 @@ function initForm() {
     const isMessageValid = validateField(messageInput, messageError, v => v.length >= 10, "Message must be at least 10 characters");
 
     if (!isNameValid || !isEmailValid || !isMessageValid) {
-      // Shake animation on button
       btn.style.animation = "shake 0.5s ease";
       setTimeout(() => btn.style.animation = "", 500);
       return;
     }
 
-    // Check if Formspree is configured
     const action = form.getAttribute("action");
     if (action && action.includes("YOUR_FORM_ID")) {
-      // Fallback to mailto if Formspree not set up
       const name = nameInput.value;
       const email = emailInput.value;
       const message = messageInput.value;
@@ -220,7 +233,6 @@ function initForm() {
       return;
     }
 
-    // Formspree submission
     btnText.textContent = "Sending...";
     btn.disabled = true;
 
@@ -278,7 +290,6 @@ function initNavHighlight() {
     });
   };
 
-  // Debounced scroll handler
   let ticking = false;
   window.addEventListener("scroll", () => {
     if (!ticking) {
@@ -408,7 +419,6 @@ function initHamburger() {
 
   hamburger.addEventListener("click", toggleMenu);
 
-  // Keyboard support
   hamburger.addEventListener("keydown", (e) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault();
@@ -454,7 +464,6 @@ function initCopyEmail() {
         setTimeout(() => feedback.textContent = "", 300);
       }, 2500);
     } catch (err) {
-      // Fallback for older browsers
       const textArea = document.createElement("textarea");
       textArea.value = "dhanendra1303@gmail.com";
       document.body.appendChild(textArea);
@@ -483,7 +492,391 @@ function initDynamicYear() {
 }
 
 // ============================================
-// 12. INJECT TYPING CURSOR STYLE
+// 12. SCROLL PROGRESS BAR
+// ============================================
+function initScrollProgress() {
+  const progressBar = document.getElementById('scroll-progress');
+  if (!progressBar) return;
+
+  window.addEventListener('scroll', () => {
+    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    progressBar.style.width = scrolled + '%';
+  });
+}
+
+// ============================================
+// 13. DOUBLE CLICK TO LIKE PROJECT
+// ============================================
+function initProjectLike() {
+  document.querySelectorAll('.project-card').forEach(card => {
+    card.addEventListener('dblclick', (e) => {
+      const heart = document.createElement('div');
+      heart.textContent = '❤️';
+      heart.style.cssText = `position:absolute; left:${e.offsetX}px; top:${e.offsetY}px; font-size:24px; animation:floatUp 1s ease forwards; pointer-events:none; z-index:100;`;
+      card.appendChild(heart);
+      setTimeout(() => heart.remove(), 1000);
+    });
+  });
+}
+
+// ============================================
+// 14. TAB VISIBILITY TITLE (COME BACK EFFECT)
+// ============================================
+function initTabTitleChanger() {
+  const originalTitle = "Dhanendra Sahu | AI Developer Portfolio";
+  const awayTitles = ["Come back! 👋", "Dhanendra Sahu"];
+  let titleIndex = 0;
+  let interval;
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      interval = setInterval(() => {
+        document.title = awayTitles[titleIndex];
+        titleIndex = (titleIndex + 1) % awayTitles.length;
+      }, 2000);
+    } else {
+      clearInterval(interval);
+      document.title = originalTitle;
+      titleIndex = 0;
+    }
+  });
+}
+
+// ============================================
+// 15. MOUSE SPOTLIGHT EFFECT
+// ============================================
+function initSpotlight() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  hero.addEventListener('mousemove', (e) => {
+    const rect = hero.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    hero.style.setProperty('--mouse-x', `${x}px`);
+    hero.style.setProperty('--mouse-y', `${y}px`);
+  });
+}
+
+// ============================================
+// 16. 3D TILT CARDS
+// ============================================
+function init3DTilt() {
+  const cards = document.querySelectorAll('.card, .blog-card');
+
+  cards.forEach(card => {
+    card.classList.add('card-3d');
+
+    const shine = document.createElement('div');
+    shine.className = 'card-shine';
+    card.appendChild(shine);
+
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+      shine.style.background = `linear-gradient(${135 + rotateY * 2}deg, rgba(255,255,255,${0.1 + Math.abs(rotateY)/100}) 0%, transparent 60%)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+    });
+  });
+}
+
+// ============================================
+// 17. LIVE CLOCK IN FOOTER
+// ============================================
+function initLiveClock() {
+  const clock = document.getElementById('live-clock');
+  if (!clock) return;
+
+  setInterval(() => {
+    const now = new Date();
+    clock.textContent = `🕒 ${now.toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata'})} IST`;
+  }, 1000);
+}
+
+// ============================================
+// 18. RANDOM QUOTE IN CONSOLE
+// ============================================
+function initRandomQuote() {
+  const quotes = [
+    "Code is like humor. When you have to explain it, it's bad.",
+    "First, solve the problem. Then, write the code.",
+    "Java is to JavaScript what car is to Carpet.",
+    "Talk is cheap. Show me the code."
+  ];
+
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+  console.log('%c💡 ' + randomQuote, 'color: #38bdf8; font-style: italic; font-size: 14px; padding: 5px;');
+}
+
+// ============================================
+// 19. CLICK RIPPLE EFFECT
+// ============================================
+function initRipple() {
+  document.querySelectorAll('.btn, .card').forEach(el => {
+    el.style.position = 'relative';
+    el.style.overflow = 'hidden';
+    el.addEventListener('click', (e) => {
+      const ripple = document.createElement('span');
+      ripple.className = 'ripple';
+      const rect = el.getBoundingClientRect();
+      ripple.style.left = (e.clientX - rect.left) + 'px';
+      ripple.style.top = (e.clientY - rect.top) + 'px';
+      ripple.style.width = ripple.style.height = '20px';
+      el.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+    });
+  });
+}
+
+// ============================================
+// 20. KEYBOARD SHORTCUT (Press '/' to Contact)
+// ============================================
+function initKeyboardShortcut() {
+  document.addEventListener('keydown', (e) => {
+    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+      e.preventDefault();
+      const contactLink = document.querySelector('nav a[href="#contact"]');
+      if (contactLink) contactLink.click();
+    }
+  });
+}
+
+// ============================================
+// 21. CUSTOM RIGHT-CLICK MENU (HERO SECTION)
+// ============================================
+function initCustomContextMenu() {
+  document.addEventListener('contextmenu', (e) => {
+    if (e.target.closest('.hero')) {
+      e.preventDefault();
+      alert('👋 Hey! Try the Konami Code: ↑↑↓↓←→←→BA');
+    }
+  });
+}
+
+// ============================================
+// 22. ANIMATED STATS COUNTER
+// ============================================
+function initCounters() {
+  const counters = document.querySelectorAll('.counter');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const target = +entry.target.dataset.target;
+        let current = 0;
+        const inc = target / 50;
+        const timer = setInterval(() => {
+          current += inc;
+          if (current >= target) {
+            entry.target.textContent = target;
+            clearInterval(timer);
+          } else {
+            entry.target.textContent = Math.ceil(current);
+          }
+        }, 30);
+        observer.unobserve(entry.target);
+      }
+    });
+  });
+  counters.forEach(c => observer.observe(c));
+}
+
+// ============================================
+// 23. CURSOR TRAIL (THROTTLED)
+// ============================================
+function initCursorTrail() {
+  const colors = ['#38bdf8', '#2563eb', '#60a5fa'];
+  let canCreate = true;
+
+  document.addEventListener('mousemove', (e) => {
+    if (!canCreate) return;
+    canCreate = false;
+
+    const dot = document.createElement('div');
+    dot.style.cssText = `
+      position:fixed; width:6px; height:6px; border-radius:50%;
+      background:${colors[Math.floor(Math.random()*colors.length)]};
+      left:${e.clientX}px; top:${e.clientY}px; pointer-events:none;
+      z-index:9997; opacity:0.8;
+    `;
+    document.body.appendChild(dot);
+
+    setTimeout(() => {
+      dot.style.transition = 'all 0.8s ease';
+      dot.style.transform = 'scale(0) translateY(20px)';
+      dot.style.opacity = '0';
+    }, 10);
+
+    setTimeout(() => dot.remove(), 800);
+    setTimeout(() => canCreate = true, 50);
+  });
+}
+
+// ============================================
+// 24. DOUBLE TAP TO TOP (MOBILE)
+// ============================================
+function initDoubleTapTop() {
+  let lastTap = 0;
+  document.addEventListener('touchend', (e) => {
+    const currentTime = new Date().getTime();
+    if (currentTime - lastTap < 300 && e.target.closest('nav')) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    lastTap = currentTime;
+  });
+}
+
+// ============================================
+// 25. RANDOM BACKGROUND GRADIENT SHIFT
+// ============================================
+function initGradientShift() {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const gradients = [
+    'radial-gradient(ellipse at center, #0f1f3d 0%, #020617 70%)',
+    'radial-gradient(ellipse at center, #1a103c 0%, #020617 70%)',
+    'radial-gradient(ellipse at center, #0d2b1e 0%, #020617 70%)'
+  ];
+
+  setInterval(() => {
+    hero.style.background = gradients[Math.floor(Math.random() * gradients.length)];
+  }, 10000);
+}
+
+// ============================================
+// 26. PARALLAX SCROLL EFFECT
+// ============================================
+function initParallax() {
+  document.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    document.querySelectorAll('.hero-bg span').forEach((span, i) => {
+      const speed = 0.5 + (i * 0.1);
+      span.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+    });
+  });
+}
+
+// ============================================
+// 27. KONAMI CODE EASTER EGG
+// ============================================
+function initKonamiCode() {
+  const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+  let currentIndex = 0;
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === konamiSequence[currentIndex]) {
+      currentIndex++;
+      if (currentIndex === konamiSequence.length) {
+        activateEasterEgg();
+        currentIndex = 0;
+      }
+    } else {
+      currentIndex = 0;
+    }
+  });
+
+  function activateEasterEgg() {
+    console.log('%c🎉 KONAMI CODE ACTIVATED! 🎉', 'color: #38bdf8; font-size: 24px; font-weight: bold;');
+    console.log('%cHey there, curious developer! 👋', 'color: #94a3b8; font-size: 14px;');
+    console.log('%cThanks for checking out my portfolio!', 'color: #16a34a; font-size: 14px;');
+
+    const confetti = document.createElement('div');
+    confetti.innerHTML = '🎊';
+    confetti.style.cssText = `
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 100px;
+      z-index: 10000;
+      animation: confettiPop 1s ease forwards;
+      pointer-events: none;
+    `;
+    document.body.appendChild(confetti);
+
+    setTimeout(() => confetti.remove(), 1500);
+  }
+}
+
+// ============================================
+// 28. RANDOM HERO GREETING
+// ============================================
+function initHeroGreeting() {
+  const greetingEl = document.querySelector('.hero-greeting');
+  if (!greetingEl) return;
+
+  const greetings = [
+    "👋 Hello, World!",
+    "🚀 Welcome, Coder!",
+    "💻 Happy Coding!",
+    "✨ Hey there!"
+  ];
+
+  greetingEl.textContent = greetings[Math.floor(Math.random() * greetings.length)];
+}
+
+// ============================================
+// 29. CLICK TO COPY SKILL BADGE
+// ============================================
+function initSkillCopy() {
+  const badges = document.querySelectorAll('.skill-badge');
+
+  badges.forEach((badge) => {
+    badge.addEventListener('click', () => {
+      const text = badge.textContent.trim();
+
+      navigator.clipboard.writeText(text).then(() => {
+        badge.style.transition = 'transform 0.2s ease';
+        badge.style.transform = 'scale(1.1)';
+
+        const originalBg = badge.style.backgroundColor;
+        badge.style.backgroundColor = 'var(--primary)';
+
+        setTimeout(() => {
+          badge.style.transform = '';
+          badge.style.backgroundColor = originalBg;
+        }, 300);
+      });
+    });
+  });
+}
+
+// ============================================
+// 30. MAGNETIC BUTTONS
+// ============================================
+function initMagneticButtons() {
+  const buttons = document.querySelectorAll('.btn, .card-link, .blog-read-more');
+
+  buttons.forEach(btn => {
+    btn.classList.add('btn-magnetic');
+
+    btn.addEventListener('mousemove', (e) => {
+      const rect = btn.getBoundingClientRect();
+      const x = e.clientX - rect.left - rect.width / 2;
+      const y = e.clientY - rect.top - rect.height / 2;
+
+      btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+    });
+
+    btn.addEventListener('mouseleave', () => {
+      btn.style.transform = '';
+    });
+  });
+}
+
+// ============================================
+// INJECT STYLES
 // ============================================
 function injectStyles() {
   const style = document.createElement("style");
@@ -508,429 +901,6 @@ function injectStyles() {
 }
 
 // ============================================
-// 13. DYNAMIC FAVICON BASED ON TIME
-// ============================================
-function initDynamicFavicon() {
-  const hour = new Date().getHours();
-  const isDay = hour >= 6 && hour < 18;
-  
-  // Create canvas favicon
-  const canvas = document.createElement('canvas');
-  canvas.width = 32;
-  canvas.height = 32;
-  const ctx = canvas.getContext('2d');
-  
-  // Background circle
-  ctx.beginPath();
-  ctx.arc(16, 16, 14, 0, 2 * Math.PI);
-  ctx.fillStyle = isDay ? '#38bdf8' : '#1e293b';
-  ctx.fill();
-  
-  // "D" text
-  ctx.fillStyle = isDay ? '#020617' : '#38bdf8';
-  ctx.font = 'bold 18px Poppins';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('D', 16, 16);
-  
-  // Update favicon
-  const link = document.querySelector("link[rel*='icon']") || document.createElement('link');
-  link.type = 'image/x-icon';
-  link.rel = 'shortcut icon';
-  link.href = canvas.toDataURL("image/x-icon");
-  document.head.appendChild(link);
-}
-// script.js ke END me, initDynamicYear() ke baad add karo:
-
-// ============================================
-// 14. KONAMI CODE EASTER EGG
-// ============================================
-function initKonamiCode() {
-  const konamiSequence = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-  let currentIndex = 0;
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === konamiSequence[currentIndex]) {
-      currentIndex++;
-      if (currentIndex === konamiSequence.length) {
-        activateEasterEgg();
-        currentIndex = 0;
-      }
-    } else {
-      currentIndex = 0;
-    }
-  });
-
-  function activateEasterEgg() {
-    // Fun console message
-    console.log('%c🎉 KONAMI CODE ACTIVATED! 🎉', 'color: #38bdf8; font-size: 24px; font-weight: bold;');
-    console.log('%cHey there, curious developer! 👋', 'color: #94a3b8; font-size: 14px;');
-    console.log('%cThanks for checking out my portfolio!', 'color: #16a34a; font-size: 14px;');
-    
-    // Visual feedback - confetti effect (CSS animation)
-    const confetti = document.createElement('div');
-    confetti.innerHTML = '🎊';
-    confetti.style.cssText = `
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      font-size: 100px;
-      z-index: 10000;
-      animation: confettiPop 1s ease forwards;
-      pointer-events: none;
-    `;
-    document.body.appendChild(confetti);
-    
-    setTimeout(() => confetti.remove(), 1500);
-  }
-}
-
-// ============================================
-// 15. RANDOM HERO GREETING
-// ============================================
-function initHeroGreeting() {
-  const greetingEl = document.querySelector('.hero-greeting');
-  if (!greetingEl) return;
-
-  const greetings = [
-    "👋 Hello, World!", 
-    "🚀 Welcome, Coder!", 
-    "💻 Happy Coding!", 
-    "✨ Hey there!"
-  ];
-  
-  const randomIndex = Math.floor(Math.random() * greetings.length);
-  greetingEl.textContent = greetings[randomIndex];
-}
-
-// ============================================
-// 16. CLICK TO COPY SKILL BADGE
-// ============================================
-function initSkillCopy() {
-  const badges = document.querySelectorAll('.skill-badge');
-  
-  badges.forEach((badge) => {
-    // Pointer cursor dikhane ke liye (agar CSS mein nahi hai)
-    badge.style.cursor = 'pointer';
-
-    badge.addEventListener('click', () => {
-      const text = badge.textContent.trim();
-      
-      // Clipboard pe copy karein
-      navigator.clipboard.writeText(text).then(() => {
-        // Visual feedback: thoda bada hona (scale)
-        badge.style.transition = 'transform 0.2s ease';
-        badge.style.transform = 'scale(1.1)';
-        
-        // Background color temporary change karna (Optional but cool)
-        const originalBg = badge.style.backgroundColor;
-        badge.style.backgroundColor = 'var(--primary)';
-        
-        setTimeout(() => {
-          badge.style.transform = '';
-          badge.style.backgroundColor = originalBg;
-        }, 300);
-      });
-    });
-  });
-}
-
-// ============================================
-// 17. SCROLL PROGRESS BAR
-// ============================================
-function initScrollProgress() {
-  const progressBar = document.getElementById('scroll-progress');
-  if (!progressBar) return;
-
-  window.addEventListener('scroll', () => {
-    const scrolled = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-    progressBar.style.width = scrolled + '%';
-  });
-}
-
-// ============================================
-// 18. DOUBLE CLICK TO LIKE PROJECT
-// ============================================
-function initProjectLike() {
-  document.querySelectorAll('.project-card').forEach(card => {
-    card.addEventListener('dblclick', (e) => {
-      const heart = document.createElement('div');
-      heart.textContent = '❤️';
-      // Set position based on click coordinates
-      heart.style.cssText = `position:absolute; left:${e.offsetX}px; top:${e.offsetY}px; font-size:24px; animation:floatUp 1s ease forwards; pointer-events:none; z-index:100;`;
-      card.appendChild(heart);
-      
-      // Remove heart after animation finishes (1 second)
-      setTimeout(() => heart.remove(), 1000);
-    });
-  });
-}
-
-// ============================================
-// 19. TAB VISIBILITY TITLE (COME BACK EFFECT)
-// ============================================
-function initTabTitleChanger() {
-  const originalTitle = "Dhanendra Sahu | AI Developer Portfolio";
-  const awayTitles = ["Come back! 👋", "Dhanendra Sahu"];
-  let titleIndex = 0;
-  let interval;
-
-  document.addEventListener('visibilitychange', () => {
-    if (document.hidden) {
-      // Jab user dusre tab par jaye, toh interval start karo
-      interval = setInterval(() => {
-        document.title = awayTitles[titleIndex];
-        titleIndex = (titleIndex + 1) % awayTitles.length;
-      }, 2000); // Har 2 second me title change hoga
-    } else {
-      // Jab user wapas aaye, toh animation rok do aur original title laga do
-      clearInterval(interval);
-      document.title = originalTitle;
-      titleIndex = 0;
-    }
-  });
-}
-
-// ============================================
-// 20. MOUSE SPOTLIGHT EFFECT
-// ============================================
-function initSpotlight() {
-  const hero = document.querySelector('.hero');
-  if (!hero) return; 
-
-  hero.addEventListener('mousemove', (e) => {
-    const rect = hero.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    hero.style.setProperty('--mouse-x', `${x}px`);
-    hero.style.setProperty('--mouse-y', `${y}px`);
-  });
-}
-
-// ============================================
-// 21. 3D TILT CARDS
-// ============================================
-function init3DTilt() {
-  const cards = document.querySelectorAll('.card, .blog-card');
-  
-  cards.forEach(card => {
-    card.classList.add('card-3d');
-    
-    // Add shine element
-    const shine = document.createElement('div');
-    shine.className = 'card-shine';
-    card.appendChild(shine);
-    
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = (y - centerY) / 20;
-      const rotateY = (centerX - x) / 20;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
-      
-      // Move shine
-      shine.style.background = `linear-gradient(${135 + rotateY * 2}deg, rgba(255,255,255,${0.1 + Math.abs(rotateY)/100}) 0%, transparent 60%)`;
-    });
-    
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = '';
-    });
-  });
-}
-
-// ============================================
-// 23. LIVE CLOCK IN FOOTER
-// ============================================
-function initLiveClock() {
-  const footer = document.querySelector('footer');
-  if (!footer) return;
-
-  const clock = document.createElement('p');
-  clock.id = 'live-clock';
-  clock.style.cssText = 'font-size:0.75rem; color:#475569; margin-top:8px; font-family:monospace;';
-  footer.appendChild(clock);
-
-  setInterval(() => {
-    const now = new Date();
-    clock.textContent = `🕒 ${now.toLocaleTimeString('en-IN', {timeZone: 'Asia/Kolkata'})} IST`;
-  }, 1000);
-} 
-
-// ============================================
-// 24. RANDOM QUOTE IN CONSOLE
-// ============================================
-function initRandomQuote() {
-  const quotes = [
-    "Code is like humor. When you have to explain it, it's bad.",
-    "First, solve the problem. Then, write the code.",
-    "Java is to JavaScript what car is to Carpet.",
-    "Talk is cheap. Show me the code."
-  ];
-  
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-  console.log('%c💡 ' + randomQuote, 'color: #38bdf8; font-style: italic; font-size: 14px; padding: 5px;');
-}
-// ============================================
-// 25. RANDOM QUOTE IN CONSOLE
-// ============================================
-// script.js me:
-function initRipple() {
-  document.querySelectorAll('.btn, .card').forEach(el => {
-    el.style.position = 'relative';
-    el.style.overflow = 'hidden';
-    el.addEventListener('click', (e) => {
-      const ripple = document.createElement('span');
-      ripple.className = 'ripple';
-      const rect = el.getBoundingClientRect();
-      ripple.style.left = (e.clientX - rect.left) + 'px';
-      ripple.style.top = (e.clientY - rect.top) + 'px';
-      ripple.style.width = ripple.style.height = '20px';
-      el.appendChild(ripple);
-      setTimeout(() => ripple.remove(), 600);
-    });
-  });
-}
-// Call: initRipple(); 
-
-// ============================================
-// 26. KEYBOARD SHORTCUT (Press '/' to Contact)
-// ============================================
-function initKeyboardShortcut() {
-  document.addEventListener('keydown', (e) => {
-    // Agar user '/' dabaye, aur kisi input ya textarea mein type na kar raha ho
-    if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
-      e.preventDefault(); // Default search behavior rokna
-      
-      const contactLink = document.querySelector('nav a[href="#contact"]');
-      if (contactLink) {
-        contactLink.click(); // Contact link par click simulate karna
-      }
-    }
-  });
-}
-
-// ============================================
-// 28. CUSTOM RIGHT-CLICK MENU (HERO SECTION)
-// ============================================
-function initCustomContextMenu() {
-  document.addEventListener('contextmenu', (e) => {
-    // Check agar user ne Hero section ke andar right-click kiya hai
-    if(e.target.closest('.hero')) {
-      e.preventDefault(); // Normal right-click menu ko rokna
-      alert('👋 Hey! Try the Konami Code: ↑↑↓↓←→←→BA');
-    }
-  });
-}
-
-// ============================================
-// 29. SMOOTH NUMBER COUNTER (STATS)
-// ============================================
-function initCounters() {
-  const counters = document.querySelectorAll('.counter');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if(entry.isIntersecting) {
-        const target = +entry.target.dataset.target;
-        let current = 0;
-        const inc = target / 50;
-        const timer = setInterval(() => {
-          current += inc;
-          if(current >= target) {
-            entry.target.textContent = target;
-            clearInterval(timer);
-          } else {
-            entry.target.textContent = Math.ceil(current);
-          }
-        }, 30);
-        observer.unobserve(entry.target);
-      }
-    });
-  });
-  counters.forEach(c => observer.observe(c));
-}
-
-// ============================================
-// 30. CURSOR TRAIL (PARTICLES EFFECT)
-// ============================================
-function initCursorTrail() {
-  const colors = ['#38bdf8', '#2563eb', '#60a5fa']; // Blue shades
-  document.addEventListener('mousemove', (e) => {
-    const dot = document.createElement('div');
-    dot.style.cssText = `
-      position:fixed; width:6px; height:6px; border-radius:50%;
-      background:${colors[Math.floor(Math.random()*colors.length)]};
-      left:${e.clientX}px; top:${e.clientY}px; pointer-events:none;
-      z-index:9997; opacity:0.8;
-    `;
-    document.body.appendChild(dot);
-    
-    setTimeout(() => {
-      dot.style.transition = 'all 0.8s ease';
-      dot.style.transform = 'scale(0) translateY(20px)';
-      dot.style.opacity = '0';
-    }, 10);
-    
-    setTimeout(() => dot.remove(), 800);
-  });
-}
-
-// ============================================
-// 31. DOUBLE TAP TO TOP (MOBILE)
-// ============================================
-function initDoubleTapTop() {
-  let lastTap = 0;
-  document.addEventListener('touchend', (e) => {
-    const currentTime = new Date().getTime();
-    // Agar 300ms ke andar do baar tap hua navigation bar pe
-    if (currentTime - lastTap < 300 && e.target.closest('nav')) {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-    lastTap = currentTime;
-  });
-}
-
-// ============================================
-// 32. RANDOM BACKGROUND GRADIENT SHIFT
-// ============================================
-function initGradientShift() {
-  const hero = document.querySelector('.hero');
-  if (!hero) return; // Error se bachne ke liye check
-
-  const gradients = [
-    'radial-gradient(ellipse at center, #0f1f3d 0%, #020617 70%)',
-    'radial-gradient(ellipse at center, #1a103c 0%, #020617 70%)',
-    'radial-gradient(ellipse at center, #0d2b1e 0%, #020617 70%)'
-  ];
-  
-  // Har 10 second (10000ms) mein background change hoga
-  setInterval(() => {
-    hero.style.background = gradients[Math.floor(Math.random() * gradients.length)];
-  }, 10000);
-}
-
-// ============================================
-// 33. PARALLAX SCROLL EFFECT
-// ============================================
-function initParallax() {
-  document.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    
-    // Hero background ke shapes (spans) ko select karna
-    document.querySelectorAll('.hero-bg span').forEach((span, i) => {
-      // Har shape ki speed thodi alag hogi (3D feel ke liye)
-      const speed = 0.5 + (i * 0.1);
-      span.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
-    });
-  });
-}
-
-// ============================================
 // INIT — Run everything on DOM load
 // ============================================
 window.addEventListener("DOMContentLoaded", () => {
@@ -951,10 +921,9 @@ window.addEventListener("DOMContentLoaded", () => {
   initTabTitleChanger();
   initSpotlight();
   init3DTilt();
-  initMagneticButtons();
   initLiveClock();
   initRandomQuote();
-  initRippleEffect();
+  initRipple();
   initKeyboardShortcut();
   initCustomContextMenu();
   initCounters();
@@ -962,10 +931,10 @@ window.addEventListener("DOMContentLoaded", () => {
   initDoubleTapTop();
   initGradientShift();
   initParallax();
-  
-  setTimeout(() => {
-    initTextScramble();
-  }, 1000); // 1000 means 1 second delay
+  initKonamiCode();
+  initHeroGreeting();
+  initSkillCopy();
+  initMagneticButtons();
 
   console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
