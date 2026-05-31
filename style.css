@@ -1197,3 +1197,19 @@ body.light-mode .hamburger span {
   .hero-btns { flex-direction: column; align-items: center; }
   .btn { width: 100%; max-width: 280px; justify-content: center; }
 }
+
+/* style.css ke end me */
+.cursor-blink::after {
+  content: '';
+  position: absolute;
+  right: -4px;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--primary);
+  animation: typeSound 0.1s ease;
+}
+@keyframes typeSound {
+  0% { transform: scaleY(1.2); }
+  100% { transform: scaleY(1); }
+}
