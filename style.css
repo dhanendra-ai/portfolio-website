@@ -1198,7 +1198,6 @@ body.light-mode .hamburger span {
   .btn { width: 100%; max-width: 280px; justify-content: center; }
 }
 
-/* style.css ke end me */
 .cursor-blink::after {
   content: '';
   position: absolute;
