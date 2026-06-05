@@ -1216,3 +1216,11 @@ body.light-mode .hamburger span {
 body, body * {
   transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
 }
+
+body {
+  opacity: 0;
+  animation: fadeInBody 0.8s ease forwards;
+}
+@keyframes fadeInBody {
+  to { opacity: 1; }
+}
