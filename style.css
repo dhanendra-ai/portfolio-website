@@ -1224,3 +1224,16 @@ body {
 @keyframes fadeInBody {
   to { opacity: 1; }
 }
+
+/* style.css ke end me */
+.logo:hover {
+  animation: glitch 0.3s ease infinite;
+}
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
