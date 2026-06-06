@@ -876,7 +876,7 @@ function initMagneticButtons() {
 }
 
 // ============================================
-// INJECT STYLES
+// 31. INJECT STYLES
 // ============================================
 function injectStyles() {
   const style = document.createElement("style");
@@ -899,6 +899,20 @@ function injectStyles() {
   `;
   document.head.appendChild(style);
 }
+
+// ============================================
+// 32. PARALLAX SCROLL EFFECT
+// ============================================
+function initParallax() {
+  document.addEventListener('scroll', () => {
+    const scrolled = window.scrollY;
+    document.querySelectorAll('.hero-bg span').forEach((span, i) => {
+      const speed = 0.5 + (i * 0.1);
+      span.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+    });
+  });
+} 
+
 
 // ============================================
 // INIT — Run everything on DOM load
