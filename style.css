@@ -1225,7 +1225,6 @@ body {
   to { opacity: 1; }
 }
 
-/* style.css ke end me */
 .logo:hover {
   animation: glitch 0.3s ease infinite;
 }
