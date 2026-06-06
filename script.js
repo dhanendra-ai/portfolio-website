@@ -949,6 +949,8 @@ window.addEventListener("DOMContentLoaded", () => {
   initHeroGreeting();
   initSkillCopy();
   initMagneticButtons();
+  initParallax();
+  
 
   console.log("🚀 Portfolio loaded — Dhanendra Sahu 2026");
 });
